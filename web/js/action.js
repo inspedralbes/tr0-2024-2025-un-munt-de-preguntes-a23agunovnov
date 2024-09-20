@@ -1,4 +1,4 @@
-fetch('http://localhost/TR0/data.json')
+fetch('http://localhost/tr0-2024-2025-un-munt-de-preguntes-a23agunovnov/back/data.json')
 .then(response => response.json())
 .then(dataRecibida => {
   jugar(dataRecibida);
@@ -20,12 +20,10 @@ function jugar(dataRecibida){
 
 let enviarScore = document.getElementById('enviarScore');
 let subcontainer = document.getElementById('subcontainer');
-let estatDeLaPartida = [];
-let rtasFetas = new Array(30);
- /*{
-  respostesCorrectes: 0,
-  preguntesFetes: 0
-};*/
+let estatDeLaPartida = {
+  quantitatRespostes: 0,
+  rtasFetas: new Array()
+};
 
 //CONTADOR
 window.onload = updateClock;
@@ -37,15 +35,13 @@ function updateClock(){
     setTimeout(updateClock, 1000);
   }else{
     enviarScore.classList.remove("hidden");
-    htmlString = `<h2 class="tiempoAcabado">El tiempo se ha acabado</h2><h3 id="rtas">Respuestas: </h3>`;
-    
-    rtasFetas.forEach(rta => {
+    htmlString = `<h2 class="tiempoAcabado">El tiempo se ha acabado</h2><h3 id="rtas">Cantidad de respuestas: ${estatDeLaPartida.quantitatRespostes}</h3>`;
+
+    estatDeLaPartida.rtasFetas.forEach(rta => {
       htmlString += `<p>ID Pregunta: ${rta.idPreg} | ID Respuesta: ${rta.idResp}</p>`
     });
-    
-    subcontainer.innerHTML = htmlString;
 
-    //document.getElementById('rtas').innerHTML += estatDeLaPartida.respostesCorrectes;
+    subcontainer.innerHTML = htmlString;
   }
 }
 
@@ -63,7 +59,7 @@ function pulsar(i,j){
     btnElem = document.getElementById(j);
     //if(j == data.preguntes[i].resposta_correcta){
         //estatDeLaPartida.respostesCorrectes++;
-        rtasFetas[iterador] = {
+        estatDeLaPartida.rtasFetas[iterador] = {
           idPreg: data.preguntes[i].id,
           idResp: j
         };
@@ -72,7 +68,7 @@ function pulsar(i,j){
       btnElem.style.background = "#fc5454";
     }*/
     
-    //estatDeLaPartida.preguntesFetes = iterador;
+      estatDeLaPartida.quantitatRespostes = iterador+1;
 
     //MOSTRAR PREGUNTA + RESPUESTAS SIGUIENTE
     setTimeout(() => {
