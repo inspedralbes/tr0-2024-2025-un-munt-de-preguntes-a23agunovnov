@@ -12,22 +12,26 @@
          return $pregArray;
     }
 
-    // function numerosRandom($min, $max){
-    //     $arrayRandom = array();
-    //     $iterador = $min;
-    //     while($iterador <= $max){
-    //         $randomID = random_int($min,$max);
-    //         if(!in_array($randomID, $arrayRandom)){
-    //             $arrayRandom[$iterador] = $randomID;
-    //             $iterador++;
-    //         }
-    //     }
-    //     return $arrayRandom;
-    // }
+    function numerosRandom($min, $max){
+         $arrayRandom = array();
+         $iterador = $min;
+         while($iterador <= $max){
+             $randomID = random_int($min,$max);
+             if(!in_array($randomID, $arrayRandom)){
+                 $arrayRandom[$iterador] = $randomID;
+                 $iterador++;
+             }
+         }
+         return $arrayRandom;
+    }
 
-    // $pregArray = mezclarPreguntas($data['preguntes']);
+    $pregArray = mezclarPreguntas($data['preguntes']);
 
     // return $pregArray; //No funciona
 
-    echo json_encode($data);
+    $preguntas = $pregArray;
+
+    foreach($preguntas as $preg){
+        echo $preg['pregunta'].'<br>';
+    }
 ?>
