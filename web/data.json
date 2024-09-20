@@ -1,0 +1,365 @@
+{
+  "preguntes": [
+    {
+      "id": 1,
+      "pregunta": "Forrest Gump",
+      "respostes": [
+        "1996",
+        "1993",
+        "1994",
+        "1995"
+      ],
+      "resposta_correcta": 3,
+      "imatge": "https://exemple.com/forrest_gump.jpg"
+    },
+    {
+      "id": 2,
+      "pregunta": "Titanic",
+      "respostes": [
+        "1996",
+        "1999",
+        "1997",
+        "1998"
+      ],
+      "resposta_correcta": 2,
+      "imatge": "https://exemple.com/titanic.jpg"
+    },
+    {
+      "id": 3,
+      "pregunta": "The Matrix",
+      "respostes": [
+        "2000",
+        "1999",
+        "1998",
+        "2001"
+      ],
+      "resposta_correcta": 1,
+      "imatge": "https://exemple.com/the_matrix.jpg"
+    },
+    {
+      "id": 4,
+      "pregunta": "Avatar",
+      "respostes": [
+        "2007",
+        "2010",
+        "2008",
+        "2009"
+      ],
+      "resposta_correcta": 3,
+      "imatge": "https://exemple.com/avatar.jpg"
+    },
+    {
+      "id": 5,
+      "pregunta": "Inception",
+      "respostes": [
+        "2009",
+        "2011",
+        "2010",
+        "2008"
+      ],
+      "resposta_correcta": 2,
+      "imatge": "https://exemple.com/inception.jpg"
+    },
+    {
+      "id": 6,
+      "pregunta": "Jurassic Park",
+      "respostes": [
+        "1994",
+        "1992",
+        "1995",
+        "1993"
+      ],
+      "resposta_correcta": 0,
+      "imatge": "https://exemple.com/jurassic_park.jpg"
+    },
+    {
+      "id": 7,
+      "pregunta": "The Dark Knight",
+      "respostes": [
+        "2007",
+        "2010",
+        "2008",
+        "2009"
+      ],
+      "resposta_correcta": 2,
+      "imatge": "https://exemple.com/the_dark_knight.jpg"
+    },
+    {
+      "id": 8,
+      "pregunta": "La La Land",
+      "respostes": [
+        "2018",
+        "2016",
+        "2017",
+        "2015"
+      ],
+      "resposta_correcta": 1,
+      "imatge": "https://exemple.com/la_la_land.jpg"
+    },
+    {
+      "id": 9,
+      "pregunta": "The Godfather",
+      "respostes": [
+        "1973",
+        "1971",
+        "1974",
+        "1972"
+      ],
+      "resposta_correcta": 2,
+      "imatge": "https://exemple.com/the_godfather.jpg"
+    },
+    {
+      "id": 10,
+      "pregunta": "Pulp Fiction",
+      "respostes": [
+        "1994",
+        "1995",
+        "1993",
+        "1996"
+      ],
+      "resposta_correcta": 0,
+      "imatge": "https://exemple.com/pulp_fiction.jpg"
+    },
+    {
+      "id": 11,
+      "pregunta": "E.T. the Extra-Terrestrial",
+      "respostes": [
+        "1983",
+        "1982",
+        "1984",
+        "1981"
+      ],
+      "resposta_correcta": 1,
+      "imatge": "https://exemple.com/et.jpg"
+    },
+    {
+      "id": 12,
+      "pregunta": "The Shawshank Redemption",
+      "respostes": [
+        "1995",
+        "1996",
+        "1993",
+        "1994"
+      ],
+      "resposta_correcta": 3,
+      "imatge": "https://exemple.com/shawshank_redemption.jpg"
+    },
+    {
+      "id": 13,
+      "pregunta": "The Lion King",
+      "respostes": [
+        "1996",
+        "1993",
+        "1994",
+        "1995"
+      ],
+      "resposta_correcta": 1,
+      "imatge": "https://exemple.com/lion_king.jpg"
+    },
+    {
+      "id": 14,
+      "pregunta": "Mad Max: Fury Road",
+      "respostes": [
+        "2017",
+        "2016",
+        "2014",
+        "2015"
+      ],
+      "resposta_correcta": 2,
+      "imatge": "https://exemple.com/mad_max_fury_road.jpg"
+    },
+    {
+      "id": 15,
+      "pregunta": "The Grand Budapest Hotel",
+      "respostes": [
+        "2016",
+        "2013",
+        "2014",
+        "2015"
+      ],
+      "resposta_correcta": 3,
+      "imatge": "https://exemple.com/grand_budapest_hotel.jpg"
+    },
+    {
+      "id": 16,
+      "pregunta": "Gladiator",
+      "respostes": [
+        "2000",
+        "1999",
+        "2001",
+        "2002"
+      ],
+      "resposta_correcta": 0,
+      "imatge": "https://exemple.com/gladiator.jpg"
+    },
+    {
+      "id": 17,
+      "pregunta": "The Avengers",
+      "respostes": [
+        "2010",
+        "2011",
+        "2012",
+        "2013"
+      ],
+      "resposta_correcta": 2,
+      "imatge": "https://exemple.com/the_avengers.jpg"
+    },
+    {
+      "id": 18,
+      "pregunta": "The Silence of the Lambs",
+      "respostes": [
+        "1991",
+        "1992",
+        "1990",
+        "1993"
+      ],
+      "resposta_correcta": 1,
+      "imatge": "https://exemple.com/silence_of_the_lambs.jpg"
+    },
+    {
+      "id": 19,
+      "pregunta": "Jaws",
+      "respostes": [
+        "1973",
+        "1975",
+        "1976",
+        "1974"
+      ],
+      "resposta_correcta": 1,
+      "imatge": "https://exemple.com/jaws.jpg"
+    },
+    {
+      "id": 20,
+      "pregunta": "Back to the Future",
+      "respostes": [
+        "1984",
+        "1985",
+        "1987",
+        "1986"
+      ],
+      "resposta_correcta": 1,
+      "imatge": "https://exemple.com/back_to_the_future.jpg"
+    },
+    {
+      "id": 21,
+      "pregunta": "The Terminator",
+      "respostes": [
+        "1985",
+        "1984",
+        "1986",
+        "1983"
+      ],
+      "resposta_correcta": 1,
+      "imatge": "https://exemple.com/the_terminator.jpg"
+    },
+    {
+      "id": 22,
+      "pregunta": "The Exorcist",
+      "respostes": [
+        "1973",
+        "1975",
+        "1972",
+        "1974"
+      ],
+      "resposta_correcta": 2,
+      "imatge": "https://exemple.com/the_exorcist.jpg"
+    },
+    {
+      "id": 23,
+      "pregunta": "Casablanca",
+      "respostes": [
+        "1942",
+        "1941",
+        "1943",
+        "1944"
+      ],
+      "resposta_correcta": 0,
+      "imatge": "https://exemple.com/casablanca.jpg"
+    },
+    {
+      "id": 24,
+      "pregunta": "The Wizard of Oz",
+      "respostes": [
+        "1939",
+        "1940",
+        "1938",
+        "1941"
+      ],
+      "resposta_correcta": 0,
+      "imatge": "https://exemple.com/wizard_of_oz.jpg"
+    },
+    {
+      "id": 25,
+      "pregunta": "Schindler's List",
+      "respostes": [
+        "1992",
+        "1995",
+        "1994",
+        "1993"
+      ],
+      "resposta_correcta": 2,
+      "imatge": "https://exemple.com/schindlers_list.jpg"
+    },
+    {
+      "id": 26,
+      "pregunta": "The Social Network",
+      "respostes": [
+        "2010",
+        "2009",
+        "2011",
+        "2008"
+      ],
+      "resposta_correcta": 0,
+      "imatge": "https://exemple.com/social_network.jpg"
+    },
+    {
+      "id": 27,
+      "pregunta": "Fargo",
+      "respostes": [
+        "1995",
+        "1994",
+        "1996",
+        "1997"
+      ],
+      "resposta_correcta": 0,
+      "imatge": "https://exemple.com/fargo.jpg"
+    },
+    {
+      "id": 28,
+      "pregunta": "12 Angry Men",
+      "respostes": [
+        "1957",
+        "1958",
+        "1956",
+        "1959"
+      ],
+      "resposta_correcta": 2,
+      "imatge": "https://exemple.com/12_angry_men.jpg"
+    },
+    {
+      "id": 29,
+      "pregunta": "City of God",
+      "respostes": [
+        "2002",
+        "2001",
+        "2004",
+        "2003"
+      ],
+      "resposta_correcta": 0,
+      "imatge": "https://exemple.com/city_of_god.jpg"
+    },
+    {
+      "id": 30,
+      "pregunta": "Spirited Away",
+      "respostes": [
+        "2000",
+        "2002",
+        "2001",
+        "2003"
+      ],
+      "resposta_correcta": 2,
+      "imatge": "https://exemple.com/spirited_away.jpg"
+    }
+  ]
+}
+
