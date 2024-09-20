@@ -1,9 +1,17 @@
-fetch('http://localhost/tr0-2024-2025-un-munt-de-preguntes-a23agunovnov/back/data.json')
-.then(response => response.json())
-.then(dataRecibida => {
-  jugar(dataRecibida);
-});
+// fetch('../back/getPreguntes.php')
+// .then(response => response.json())
+// .then(dataRecibida => {
+//   jugar(dataRecibida);
+// });
 
+
+ async function getData(){
+  const request = await fetch('../back/getPreguntes.php')
+  const json = await request.json()
+  return json
+}
+
+console.log(getData())
 
 function jugar(dataRecibida){
   data = dataRecibida
