@@ -7,7 +7,7 @@ fetch('../back/getPreguntes.php')
 
 let iterador = 0; // Itera por cada pregunta
 window.onload = updateClock; //Al cargar la página web, comience la función del contador
-let totalTime = 50; // Duración del contador
+let totalTime = 5; // Duración del contador
 
 function jugar(dataRecibida){
   data = dataRecibida
@@ -27,7 +27,7 @@ function mostrarPreguntes(indice){
   setTimeout(() => {
     document.getElementById("pregunta").innerHTML = data[indice].pregunta;
     for(let j = 0; j < data[indice].respostes.length; j++){
-      htmlString += `<button class="btn" id="${j}" onclick="pulsar(${indice},${j})">${data[indice].respostes[j]}</button>`
+      htmlString += `<button class="btn" id="${j}" name="boton" onclick="pulsar(${indice},${j})">${data[indice].respostes[j]}</button>`
     }
     document.getElementById("respuestas").innerHTML = htmlString;
   }, 200);
@@ -40,14 +40,20 @@ function updateClock(){
     totalTime--;
     setTimeout(updateClock, 1000);
   }else{
+    let htmlString = "";
+    fetch('../back/validar.php',{
+      method: 'POST',
+      body: JSON.stringify(estatDeLaPartida.rtasFetas)
+    })
+    .then(response => response.json())
+    .then(score => {
+      htmlString = `<h2 class="tiempoAcabado">El tiempo se ha acabado</h2><h3 id="rtas">Respuestas correctas: ${score.numOk} / ${score.total}</h3>`;
+      subcontainer.innerHTML = htmlString;
+      console.log(score)
+    })
+    .catch(error => console.log('Error: '+error));
+
     enviarScore.classList.remove("hidden");
-    htmlString = `<h2 class="tiempoAcabado">El tiempo se ha acabado</h2><h3 id="rtas">Cantidad de respuestas: ${estatDeLaPartida.quantitatRespostes}</h3>`;
-
-    estatDeLaPartida.rtasFetas.forEach(rta => {
-      htmlString += `<p>ID Pregunta: ${rta.idPreg} | ID Respuesta: ${rta.idResp}</p>`
-    });
-
-    subcontainer.innerHTML = htmlString;
   }
 }
 
@@ -64,11 +70,9 @@ function pulsar(i,j){
       idPreg: data[i].id,
       idResp: j
     };
+
     document.getElementById(j).style.background = "#fdfd80";
     iterador++;
     mostrarPreguntes(iterador);
-  }else if(iterador == data.length -1){
-    mostrarPreguntes(iterador);
-    alert("pepe");
   }
 }
