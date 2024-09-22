@@ -1,31 +1,20 @@
-// fetch('../back/getPreguntes.php')
-// .then(response => response.json())
-// .then(dataRecibida => {
-//   jugar(dataRecibida);
-// });
+// 'http://localhost/tr0-2024-2025-un-munt-de-preguntes-a23agunovnov/back/data.json'
+fetch('../back/getPreguntes.php')
+.then(response => response.json())
+.then(dataRecibida => {
+  jugar(dataRecibida);
+});
 
-
- async function getData(){
-  const request = await fetch('../back/getPreguntes.php')
-  const json = await request.json()
-  return json
-}
-
-console.log(getData())
+let iterador = 0; // Itera por cada pregunta
+window.onload = updateClock; //Al cargar la página web, comience la función del contador
+let totalTime = 50; // Duración del contador
 
 function jugar(dataRecibida){
   data = dataRecibida
-
-  //mostrar primera pregunta + opciones
-  document.getElementById("pregunta").innerHTML = data.preguntes[0].pregunta;
-  
-  let btn = "";
-  for(let j = 0; j < data.preguntes[0].respostes.length; j++){
-    btn += `<button class="btn" id="${j}" onclick="pulsar(0,${j})">${data.preguntes[0].respostes[j]}</button>`
-  }
-  document.getElementById("respuestas").innerHTML = btn;
+  mostrarPreguntes(iterador);
 }
 
+//Declaramos los diferentes contenedores y el objeto que almacenará información de la partida
 let enviarScore = document.getElementById('enviarScore');
 let subcontainer = document.getElementById('subcontainer');
 let estatDeLaPartida = {
@@ -33,9 +22,18 @@ let estatDeLaPartida = {
   rtasFetas: new Array()
 };
 
+function mostrarPreguntes(indice){
+  let htmlString = '';
+  setTimeout(() => {
+    document.getElementById("pregunta").innerHTML = data[indice].pregunta;
+    for(let j = 0; j < data[indice].respostes.length; j++){
+      htmlString += `<button class="btn" id="${j}" onclick="pulsar(${indice},${j})">${data[indice].respostes[j]}</button>`
+    }
+    document.getElementById("respuestas").innerHTML = htmlString;
+  }, 200);
+}
+
 //CONTADOR
-window.onload = updateClock;
-let totalTime = 5;
 function updateClock(){
   if(totalTime != -1){
     document.getElementById("contador").innerHTML = totalTime;
@@ -53,39 +51,24 @@ function updateClock(){
   }
 }
 
-//FUNCIÓN DE VALIDACIÓN
-let iterador = 0;
-
+// Acción que realiza cada vez que se pulsa un botón
 function pulsar(i,j){
-  if(iterador <= 30){
-    //DESHABILITAR TOCAR MAS OPCIONES
+  if(iterador < data.length -1){
+    // deshabilitar que pueda tocar otras opciones al pulsar el botón
     document.querySelectorAll(".btn").forEach(boton => {
       boton.classList.add("disabled");
     });
-    //COMPROBAR QUE LA RESPUESTA SEA CORRECTA + CAMBIAR STYLE
-    btn = "";
-    btnElem = document.getElementById(j);
-    //if(j == data.preguntes[i].resposta_correcta){
-        //estatDeLaPartida.respostesCorrectes++;
-        estatDeLaPartida.rtasFetas[iterador] = {
-          idPreg: data.preguntes[i].id,
-          idResp: j
-        };
-        btnElem.style.background = "#fdfd80";
-    /*}else{
-      btnElem.style.background = "#fc5454";
-    }*/
-    
-      estatDeLaPartida.quantitatRespostes = iterador+1;
 
-    //MOSTRAR PREGUNTA + RESPUESTAS SIGUIENTE
-    setTimeout(() => {
-      document.getElementById("pregunta").innerHTML = data.preguntes[iterador].pregunta;
-      for(let j = 0; j < data.preguntes[iterador].respostes.length; j++){
-        btn += `<button class="btn" id="${j}" onclick="pulsar(${iterador},${j})">${data.preguntes[iterador].respostes[j]}</button>`
-      }
-      document.getElementById("respuestas").innerHTML = btn;
-    }, 200);
+    estatDeLaPartida.quantitatRespostes = iterador+1;
+    estatDeLaPartida.rtasFetas[iterador] = {
+      idPreg: data[i].id,
+      idResp: j
+    };
+    document.getElementById(j).style.background = "#fdfd80";
+    iterador++;
+    mostrarPreguntes(iterador);
+  }else if(iterador == data.length -1){
+    mostrarPreguntes(iterador);
+    alert("pepe");
   }
-  iterador++;
 }

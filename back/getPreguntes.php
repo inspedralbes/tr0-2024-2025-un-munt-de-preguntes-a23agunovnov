@@ -29,9 +29,5 @@
 
     // return $pregArray; //No funciona
 
-    $preguntas = $pregArray;
-
-    foreach($preguntas as $preg){
-        echo $preg['pregunta'].'<br>';
-    }
+    echo $preguntas = json_encode($pregArray);
 ?>

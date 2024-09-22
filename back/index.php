@@ -1,41 +1,10 @@
 <?php
-    session_start();
-    $data = file_get_contents("data.json");
-    $data = json_decode($data, true);
-
-    function mezclarPreguntas($array){
-        $numerosRandom = numerosRandom(0,9);
-        foreach($numerosRandom as $num){
-            $pregArray[] = $array[$num];
-        }
-        return $pregArray;
-    }
-
-    function numerosRandom($min, $max){
-        $arrayRandom = array();
-        $iterador = $min;
-        while($iterador <= $max){
-            $randomID = random_int($min,$max);
-            if(!in_array($randomID, $arrayRandom)){
-                $arrayRandom[$iterador] = $randomID;
-                $iterador++;
-            }
-        }
-        return $arrayRandom;
-    }
-
-    $pregArray = mezclarPreguntas($data['preguntes']);
-
     if(!isset($_SESSION['preguntes'])){
         $_SESSION['preguntes'] = $pregArray;
         $_SESSION['index'] = 0;
         $_SESSION['score'] = new stdClass();
         $_SESSION['score'] -> correctes = 0;
         $_SESSION['score'] -> total = sizeof($_SESSION['preguntes']);
-        /*$_SESSION['arrayRtas'] = array();
-        $_SESSION['IDsRta'] = new stdClass();
-        $_SESSION['IDsRta'] -> idPreg = -1;
-        $_SESSION['IDsRta'] -> idRta = -1;*/
     }
 
     $index = $_SESSION['index'];
