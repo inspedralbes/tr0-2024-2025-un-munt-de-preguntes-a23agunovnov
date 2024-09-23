@@ -1,4 +1,4 @@
-<?php
+<?php/*
     if(!isset($_SESSION['preguntes'])){
         $_SESSION['preguntes'] = $pregArray;
         $_SESSION['index'] = 0;
@@ -55,13 +55,13 @@
         header("Location: " . $_SERVER['PHP_SELF']);
         
     }
-    
+  *//*  
     function verificar($i, $j){
         if($_SESSION['preguntes'][$i]['resposta_correcta'] == $j){
             $_SESSION['score']->correctes+=1;
         }
-        /*$_SESSION['IDsRta']->idPreg = $i;
+        $_SESSION['IDsRta']->idPreg = $i;
         $_SESSION['IDsRta']->idRta = $j;
-        $_SESION['arrayRtas'][0] = $_SESSION['IDsRta'];*/
-    }
+        $_SESION['arrayRtas'][0] = $_SESSION['IDsRta'];
+    }*/
 ?>

@@ -1,15 +1,23 @@
 <?php
     session_start();
-
+    
     $data = file_get_contents("./data.json");
     $data = json_decode($data, true);
 
     function mezclarPreguntas($array){
-         $numerosRandom = numerosRandom(0,29);
-         for($i = 0; $i < 10; $i++){
-             $pregArray[] = $array[$numerosRandom[$i]];
-         }
-         return $pregArray;
+        $objPreg = array();
+        $quantPreg = $_GET['quantPreg'];
+        $numerosRandom = numerosRandom(0,29);
+
+        for($i = 0; $i < 10; $i++){
+            $preguntas = new stdClass();
+            $preguntas->id = $array[$numerosRandom[$i]]['id'];
+            $preguntas->pregunta = $array[$numerosRandom[$i]]['pregunta'];
+            $preguntas->respostes = $array[$numerosRandom[$i]]['respostes'];
+            $preguntas->imatge = $array[$numerosRandom[$i]]['imatge'];
+            $objPreg[$i] = $preguntas;
+        }
+        return $objPreg;
     }
 
     function numerosRandom($min, $max){
@@ -27,7 +35,5 @@
 
     $pregArray = mezclarPreguntas($data['preguntes']);
 
-    // return $pregArray; //No funciona
-
-    echo $preguntas = json_encode($pregArray);
+    echo json_encode($pregArray);
 ?>

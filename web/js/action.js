@@ -1,5 +1,6 @@
-// 'http://localhost/tr0-2024-2025-un-munt-de-preguntes-a23agunovnov/back/data.json'
-fetch('../back/getPreguntes.php')
+let quantPreg = 10;
+
+fetch('../back/getPreguntes.php?quantPreg='+quantPreg)
 .then(response => response.json())
 .then(dataRecibida => {
   jugar(dataRecibida);
@@ -14,8 +15,9 @@ function jugar(dataRecibida){
   mostrarPreguntes(iterador);
 }
 
-//Declaramos los diferentes contenedores y el objeto que almacenará información de la partida
+//Declaramos los diferentes contenedores y el objeto que ºalmacenará información de la partida
 let enviarScore = document.getElementById('enviarScore');
+let playAgain = document.getElementById('playAgain');
 let subcontainer = document.getElementById('subcontainer');
 let estatDeLaPartida = {
   quantitatRespostes: 0,
@@ -41,7 +43,7 @@ function updateClock(){
     setTimeout(updateClock, 1000);
   }else{
     let htmlString = "";
-    fetch('../back/validar.php',{
+    fetch('../back/finalitza.php',{
       method: 'POST',
       body: JSON.stringify(estatDeLaPartida.rtasFetas)
     })
@@ -52,7 +54,8 @@ function updateClock(){
       console.log(score)
     })
     .catch(error => console.log('Error: '+error));
-
+    
+    playAgain.classList.remove("hidden");
     enviarScore.classList.remove("hidden");
   }
 }
@@ -71,7 +74,24 @@ function pulsar(i,j){
       idResp: j
     };
 
-    document.getElementById(j).style.background = "#fdfd80";
+    fetch('../back/validar.php',{
+      method: 'POST',
+      body: JSON.stringify({
+        idPreg: data[i].id,
+        idResp: j
+    })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data == true){
+        document.getElementById(j).style.background = "#adfa97";
+      }else{
+        document.getElementById(j).style.background = "#fd6642";
+      }
+    })
+    .catch(error => console.log("Error: " + error));
+
+    //document.getElementById(j).style.background = "#fdfd80";
     iterador++;
     mostrarPreguntes(iterador);
   }
