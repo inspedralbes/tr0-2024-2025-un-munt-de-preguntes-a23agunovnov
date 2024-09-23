@@ -1,4 +1,4 @@
-let quantPreg = 10;
+const quantPreg = 10;
 
 fetch('../back/getPreguntes.php?quantPreg='+quantPreg)
 .then(response => response.json())
@@ -19,10 +19,7 @@ function jugar(dataRecibida){
 let enviarScore = document.getElementById('enviarScore');
 let playAgain = document.getElementById('playAgain');
 let subcontainer = document.getElementById('subcontainer');
-let estatDeLaPartida = {
-  quantitatRespostes: 0,
-  rtasFetas: new Array()
-};
+let estatDeLaPartida = {rtasFetas: new Array()};
 
 function mostrarPreguntes(indice){
   let htmlString = '';
@@ -43,6 +40,7 @@ function updateClock(){
     setTimeout(updateClock, 1000);
   }else{
     let htmlString = "";
+    
     fetch('../back/finalitza.php',{
       method: 'POST',
       body: JSON.stringify(estatDeLaPartida.rtasFetas)
@@ -68,7 +66,6 @@ function pulsar(i,j){
       boton.classList.add("disabled");
     });
 
-    estatDeLaPartida.quantitatRespostes = iterador+1;
     estatDeLaPartida.rtasFetas[iterador] = {
       idPreg: data[i].id,
       idResp: j
