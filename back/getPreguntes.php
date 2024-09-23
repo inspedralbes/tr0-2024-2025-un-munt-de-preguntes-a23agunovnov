@@ -4,6 +4,10 @@
     $data = file_get_contents("./data.json");
     $data = json_decode($data, true);
 
+    if(!isset($_SESSION['preguntes'])){
+        $_SESSION['preguntes'] = mezclarPreguntas($data['preguntes']);
+    }
+
     function mezclarPreguntas($array){
         $objPreg = array();
         $quantPreg = $_GET['quantPreg'];
@@ -33,7 +37,6 @@
          return $arrayRandom;
     }
 
-    $pregArray = mezclarPreguntas($data['preguntes']);
 
-    echo json_encode($pregArray);
+    echo json_encode($_SESSION['preguntes']);
 ?>

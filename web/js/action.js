@@ -54,7 +54,7 @@ function updateClock(){
       console.log(score)
     })
     .catch(error => console.log('Error: '+error));
-    
+
     playAgain.classList.remove("hidden");
     enviarScore.classList.remove("hidden");
   }
@@ -95,4 +95,18 @@ function pulsar(i,j){
     iterador++;
     mostrarPreguntes(iterador);
   }
+}
+
+playAgain.addEventListener("click", reiniciar);
+
+function reiniciar(){
+  fetch('../back/sessiondestroy.php')
+  .then(response => response.json)
+  .then(data => {
+    if(!data){
+      alert('Ha ocurrido un error');
+    }
+  })
+  .catch(error => console.log("Error: "+error));
+  window.location.href="index.html";
 }
