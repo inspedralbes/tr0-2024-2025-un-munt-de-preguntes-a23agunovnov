@@ -1,6 +1,5 @@
 <?php
-$preguntas = file_get_contents("./data.json");
-$preguntas = json_decode($preguntas, true);
+session_start();
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -12,11 +11,13 @@ if ($data === null) {
     die('Error: No se ha podido decodificar el JSON.');
 }
 
+$iterador = 0;
 foreach($data as $rta){
-    if($preguntas['preguntes'][$rta['idPreg']-1]['resposta_correcta'] == $rta['idResp']){
+    if($_SESSION['respostes'][$iterador] == $rta['idResp']){
         $score->numOk++;
     }
     $score->total++;
+    $iterador++;
 }
 
 $response = $score;

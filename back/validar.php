@@ -1,13 +1,12 @@
 <?php
-    $data = file_get_contents('./data.json');
-    $data = json_decode($data, true);
+    session_start();
     $validar = json_decode(file_get_contents('php://input'),true);
-    
-    $idPreg = $validar['idPreg']-1;
+
+    $idPreg = $validar['idPreg'];
     $idResp = $validar['idResp'];
 
     $isOk = false;
-    if($data['preguntes'][$idPreg]['resposta_correcta'] == $idResp){
+    if($_SESSION['respostes'][$idPreg] == $idResp){
         $isOk = true;
     }
 

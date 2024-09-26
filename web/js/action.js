@@ -15,6 +15,7 @@ function jugar(dataRecibida){
   mostrarPreguntes(iterador);
 }
 
+// ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ARREGLAR ESTAS COSAS, HAY QUE EVITAR EL USO DE VARIABLES GLOBALES!!!!!!!!!!!!!!!!11
 //Declaramos los diferentes contenedores y el objeto que ºalmacenará información de la partida
 let enviarScore = document.getElementById('enviarScore');
 let playAgain = document.getElementById('playAgain');
@@ -67,14 +68,14 @@ function pulsar(i,j){
     });
 
     estatDeLaPartida.rtasFetas[iterador] = {
-      idPreg: data[i].id,
+      idPreg: iterador,
       idResp: j
     };
 
     fetch('../back/validar.php',{
       method: 'POST',
       body: JSON.stringify({
-        idPreg: data[i].id,
+        idPreg: iterador,
         idResp: j
     })
     })

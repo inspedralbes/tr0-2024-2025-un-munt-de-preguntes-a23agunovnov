@@ -1,4 +1,5 @@
-<?php/*
+<?php
+/*
     if(!isset($_SESSION['preguntes'])){
         $_SESSION['preguntes'] = $pregArray;
         $_SESSION['index'] = 0;
@@ -63,5 +64,6 @@
         $_SESSION['IDsRta']->idPreg = $i;
         $_SESSION['IDsRta']->idRta = $j;
         $_SESION['arrayRtas'][0] = $_SESSION['IDsRta'];
-    }*/
+    }
+*/
 ?>
