@@ -1,16 +1,25 @@
 <?php
     include 'conexio.php';
 
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
     $data = file_get_contents("./data.json");
     $data = json_decode($data, true);
+
+    $sql = "DROP TABLE IF EXISTS respostes";
+    $conn -> query($sql);
+    $sql = "DROP TABLE IF EXISTS preguntes";
+    $conn -> query($sql);
 
     createTables($conn);
 
     function createTables($conn){
         $sql = "CREATE TABLE IF NOT EXISTS `preguntes`(
             `id` INT NOT NULL AUTO_INCREMENT ,
-            `pregunta` VARCHAR(500) NOT NULL ,
-            `imatge` VARCHAR(1000) NOT NULL ,
+            `pregunta` VARCHAR(255) NOT NULL ,
+            `imatge` VARCHAR(500) NOT NULL ,
             PRIMARY KEY (`id`)
         )";
         if($conn ->query($sql)){
@@ -36,18 +45,34 @@
     }
 
     foreach($data['preguntes'] as $row){
-        $id = $row['id'];
         $pregunta = $row['pregunta'];
+        $pregunta = mysqli_real_escape_string($conn, $pregunta);
         $imatge = $row['imatge'];
 
-        $sql = "INSERT INTO preguntes(id, pregunta, imatge)
-                    VALUES ($id, '$pregunta', '$imatge')";
+        $sql = "INSERT INTO preguntes(pregunta, imatge) VALUES ('$pregunta', '$imatge')";
 
-        if(mysqli_query($conn, $sql)){
-            echo '<br>'.$row['id'].' - '.$row['pregunta'];
-        }else{
+        if(!mysqli_query($conn, $sql)){
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             exit();
+        }
+    }
+ 
+    foreach($data['preguntes'] as $row){
+        
+        $idPreg = $row['id'];
+        $idResp = -1;
+        foreach($row['respostes'] as $rta){
+            $idResp += 1;
+            $resposta = $rta;
+            $correcte = 0;
+            if($idResp == $row['resposta_correcta']){
+                $correcte = 1;
+            }
+            $sql = "INSERT INTO respostes(idPreg, resposta, correcte) VALUES ($idPreg, '$resposta', $correcte)";
+            if(!mysqli_query($conn, $sql)){
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                exit();
+            }
         }
     }
 ?>

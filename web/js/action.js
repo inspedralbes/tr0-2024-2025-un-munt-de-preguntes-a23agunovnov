@@ -20,7 +20,10 @@ function jugar(dataRecibida){
 let enviarScore = document.getElementById('enviarScore');
 let playAgain = document.getElementById('playAgain');
 let subcontainer = document.getElementById('subcontainer');
-let estatDeLaPartida = {rtasFetas: new Array()};
+
+let estatDeLaPartida = {
+  rtasFetas: new Array()
+};
 
 function mostrarPreguntes(indice){
   let htmlString = '';
