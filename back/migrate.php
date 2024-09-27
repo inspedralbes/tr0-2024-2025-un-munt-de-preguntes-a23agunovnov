@@ -1,10 +1,6 @@
 <?php
     include 'conexio.php';
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-
     $data = file_get_contents("./data.json");
     $data = json_decode($data, true);
 
@@ -58,7 +54,6 @@
     }
  
     foreach($data['preguntes'] as $row){
-        
         $idPreg = $row['id'];
         $idResp = -1;
         foreach($row['respostes'] as $rta){

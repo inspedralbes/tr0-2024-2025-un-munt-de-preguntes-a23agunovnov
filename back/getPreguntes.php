@@ -1,31 +1,49 @@
 <?php
     session_start();
 
-    $data = file_get_contents("./data.json");
-    $data = json_decode($data, true);
+    include "conexio.php";
+
+    error_reporting(E_ALL);
+    ini_set("display_errors",'On');
+    
+    $sql = "SELECT * FROM preguntes";
+    $preguntes = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM respostes";
+    $respostes = mysqli_query($conn, $sql);
 
     if(!isset($_SESSION['preguntes']) || !isset($_SESSION['respostes'])){
-        $_SESSION['preguntes'] = mezclarPreguntas($data['preguntes']);
+        $_SESSION['preguntes'] = mezclarPreguntas($preguntes, $respostes);
     }
 
-    function mezclarPreguntas($array){
-        $objPreg = array();
+    function mezclarPreguntas($preguntes, $respostes){
+        $data = [];
         $quantPreg = $_GET['quantPreg']+1;
         $numerosRandom = numerosRandom(0,29);
-        $respostesOk = array();
+        $pregArray = convert($preguntes);
 
         for($i = 0; $i < $quantPreg; $i++){
-            $preguntas = new stdClass();
-            $preguntas->id = $array[$numerosRandom[$i]]['id'];
-            $preguntas->pregunta = $array[$numerosRandom[$i]]['pregunta'];
-            $preguntas->respostes = $array[$numerosRandom[$i]]['respostes'];
-            $respostesOk[$i] = $array[$numerosRandom[$i]]['resposta_correcta'];
-            $preguntas->imatge = $array[$numerosRandom[$i]]['imatge'];
-            $objPreg[$i] = $preguntas;
+            $obj = new stdClass();
+            $obj -> id = $pregArray[$numerosRandom[$i]]['id'];
+            $obj -> pregunta = $pregArray[$numerosRandom[$i]]['pregunta'];
+            $respuestas = [];
+            $index = 0;
+            foreach($respostes as $rta){
+                if($rta['idPreg'] == $pregArray[$numerosRandom[$i]]['id']){
+                    $respuestas[] = $rta['resposta'];
+                    if($rta['correcte'] == 1){
+                        $resposta_correcte[] = $index;
+                    }
+                    $index++;
+                }
+            }
+            $obj -> respostes = $respuestas;
+            //$obj -> resposta_correcte = $resposta_correcte;
+            $obj -> imatge = $pregArray[$numerosRandom[$i]]['imatge'];
+            $data[] = json_decode(json_encode($obj), true);
         }
-        $_SESSION['respostes'] = $respostesOk;
+        $_SESSION['respostes'] = $resposta_correcte;
 
-        return $objPreg;
+        return $data;
     }
 
     function numerosRandom($min, $max){
@@ -39,6 +57,14 @@
              }
          }
          return $arrayRandom;
+    }
+
+    function convert($querySQL){
+        $array = [];
+        foreach($querySQL as $query){
+            $array[] = $query;
+        }
+        return $array;
     }
 
     echo json_encode($_SESSION['preguntes']);
