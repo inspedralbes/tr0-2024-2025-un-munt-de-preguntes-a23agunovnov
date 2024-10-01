@@ -52,7 +52,7 @@
             exit();
         }
     }
- 
+
     foreach($data['preguntes'] as $row){
         $idPreg = $row['id'];
         $idResp = -1;

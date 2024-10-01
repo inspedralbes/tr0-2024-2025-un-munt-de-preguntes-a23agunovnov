@@ -7,14 +7,19 @@
     <title>TR0</title>
 </head>
 <body>
-    <div id="container">
-        <div id="subcontainer">
-            <h1 id="contador" style="text-align: center;" id="contador"></h1>
-            <h3 id="pregunta"></h3>
-            <div id="respuestas"></div>
+    <div id="padre">
+        <div id="container">
+            <div id="subcontainer">
+                <h1 id="contador" style="text-align: center;" id="contador"></h1>
+                <h3 id="pregunta"></h3>
+                <div class="imgContainer">
+                    <img id="portada" src="" alt="">
+                </div>
+                <div id="respuestas"></div>
+            </div>
+            <button id="enviarScore" class="hidden btnEnd">Enviar formulario</button>
+            <button id="playAgain" class="hidden btnEnd">Jugar de nuevo</button>
         </div>
-        <button id="enviarScore" class="hidden">Enviar formulario</button>
-        <button id="playAgain" class="hidden">Jugar de nuevo</button>
     </div>
     <script src="js/action.js"></script>
 </body>

@@ -1,4 +1,8 @@
 body{
+    margin: 0;
+}
+
+#padre{
     background-color: rgb(210, 210, 210);
     margin: 0;
     height: 100vh;
@@ -9,7 +13,7 @@ body{
 
 #container{
     width: 400px;
-    height: 400px;
+    height: 450px;
     border-radius: 20px;
     background-color: white;
     box-shadow: 0 0 50px -20px;
@@ -27,7 +31,8 @@ body{
 }
 
 #contador{
-    margin-top: 0;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #respuestas{
@@ -43,7 +48,7 @@ body{
     margin-bottom: 0;
 }
 
-button{
+.btn{
     border: 2px solid #d1d1d1;
     background-color: white;
     border-radius: 20px;
@@ -52,7 +57,20 @@ button{
     margin-bottom: 10px;
 }
 
-button:hover{
+.btn:hover{
+    box-shadow: inset 0 0 10px -5px;
+}
+
+.btnEnd{
+    border: 2px solid #d1d1d1;
+    background-color: white;
+    border-radius: 20px;
+    height: 30px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.btnEnd:hover{
     box-shadow: inset 0 0 10px -5px;
 }
 
@@ -68,3 +86,117 @@ button:hover{
 .hidden{
     display: none;
 }
+
+.hover:hover{
+    background-color: #e6f4ff;
+}
+
+.imgContainer{
+    width: 300px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.imgContainer img{
+    max-height: 150px;
+}
+
+.overlay{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.editarContainer{
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    position: fixed;
+    z-index: 20;
+}
+
+.editarbtn{
+    cursor: pointer;
+}
+
+.borrarContainer{
+    width: 400;
+    height: 100px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    position: fixed;
+    z-index: 20;
+}
+
+.borrarbtn{
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.borrarbtn img{
+    display: block;
+    max-width: 100%;
+}
+
+.ocultar{
+    display: none;
+}
+
+.mostrar{
+    display: flex;
+    justify-content: center;
+}
+
+.tablaContainer{
+    display: flex;
+    justify-content: center;
+}
+
+th:nth-child(n+3), td:nth-child(n+3){
+    padding-left: 100px;
+}
+
+th:nth-child(2), td:nth-child(2){
+    padding-left: 10px;
+}
+
+tr th{
+    text-align: left;
+}
+
+.imatgeWidth {
+    width: 100px;
+    max-width: 300px; /* Ancho máximo */
+    overflow: hidden; /* Ocultar desbordamiento */
+    text-overflow: ellipsis; /* Mostrar "..." para texto que se corta */
+    white-space: nowrap; /* Evitar que el texto se rompa en múltiples líneas */
+}
+
+.correcteWidth{
+    width: 250px;
+}
+
+.flex-separado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.noStyleBTN{
+    background: transparent;
+    border: none;
+}
+
+

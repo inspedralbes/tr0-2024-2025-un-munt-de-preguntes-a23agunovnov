@@ -9,7 +9,7 @@ fetch('../back/getPreguntes.php?quantPreg='+quantPreg)
 let data;
 let iterador = 0; // Itera por cada pregunta
 window.onload = updateClock; //Al cargar la página web, comience la función del contador
-let totalTime = 5; // Duración del contador
+let totalTime = 10; // Duración del contador
 let estatDeLaPartida = {
   rtasFetas: new Array()
 };
@@ -23,6 +23,8 @@ function mostrarPreguntes(indice){
   let htmlString = '';
   setTimeout(() => {
     document.getElementById("pregunta").innerHTML = data[indice].pregunta;
+    document.getElementById("portada").setAttribute('src', data[indice].imatge);
+    document.getElementById("portada").setAttribute('alt', data[indice].pregunta+".jpg");
     for(let j = 0; j < data[indice].respostes.length; j++){
       htmlString += `<button class="btn" id=${j} idResp="${j}" name="boton">${data[indice].respostes[j]}</button>`
     }

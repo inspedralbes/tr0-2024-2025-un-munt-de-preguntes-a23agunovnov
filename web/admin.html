@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de administrador</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1 style="text-align:center">Panel de administrador</h1>
+    <hr>
+
+
+    <div id="editar" class="ocultar">
+        <div class="overlay"></div>
+        <div class="editarContainer">
+            <span id="idPreg"></span>
+            <input id="pregunta" type="text">
+            <input id="imatgeLink" type="text">
+            <div id="respuestas" style="display: flex; flex-direction: column; width: 70px;" class="editarResp">  </div>
+            <input id="respCorrecta" type="text"><br>
+            <input type="button" id="cancelar1" value="Cancelar">
+            <input type="button" id="guardar" value="Guardar">
+        </div>
+    </div>
+
+
+
+    <div id="borrar" class="ocultar">
+        <div class="overlay"></div>
+        <div class="borrarContainer">
+            <center>
+                <h3>¿Seguro que desea borrar la pregunta?</h3>
+            </center>
+            <input type="button" id="cancelar2" value="Cancelar">
+            <input type="button" id="borrar" value="Borrar">
+        </div>
+    </div>
+    <div class="tablaContainer">
+        <table style="border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Pregunta</th>
+                    <th>Imatge</th>
+                    <th>Respostes</th>
+                    <th>Resposta correcte</th>
+                </tr>
+            </thead>
+            <tbody id="panel"></tbody>
+        </table>
+    </div>
+    <script src="js/crud.js"></script>
+</body>
+</html>
