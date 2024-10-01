@@ -1,8 +1,5 @@
 <?php
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
-    $dbname = "TR0";
+    require_once "config.php";
 
     $conn = new mysqli($host,$user,$pass,$dbname);
 

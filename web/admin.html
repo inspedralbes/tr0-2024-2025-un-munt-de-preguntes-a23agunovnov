@@ -9,7 +9,7 @@
 <body>
     <h1 style="text-align:center">Panel de administrador</h1>
     <hr>
-
+    <button id="crearbtn">Crear pregunta</button>
 
     <div id="editar" class="ocultar">
         <div class="overlay"></div>
@@ -18,13 +18,11 @@
             <input id="pregunta" type="text">
             <input id="imatgeLink" type="text">
             <div id="respuestas" style="display: flex; flex-direction: column; width: 70px;" class="editarResp">  </div>
-            <input id="respCorrecta" type="text"><br>
+            <input id="respCorrecte" type="text"><br>
             <input type="button" id="cancelar1" value="Cancelar">
-            <input type="button" id="guardar" value="Guardar">
+            <input type="button" id="guardar" value="Guardar" idPreg="">
         </div>
     </div>
-
-
 
     <div id="borrar" class="ocultar">
         <div class="overlay"></div>
@@ -33,9 +31,34 @@
                 <h3>¿Seguro que desea borrar la pregunta?</h3>
             </center>
             <input type="button" id="cancelar2" value="Cancelar">
-            <input type="button" id="borrar" value="Borrar">
+            <input type="button" id="borrarAceptar" value="Borrar">
         </div>
     </div>
+
+    <div id="crear" class="ocultar">
+        <div class="overlay"></div>
+        <div class="crearContainer">
+            <h3>Crear pregunta</h3>
+            <input type="text" id="nuevaPreg" placeholder="Pregunta">
+            <input type="text" id="nuevaImatge" placeholder="Imatge">
+            <input type="text" id="0" placeholder="1º Respuesta">
+            <input type="text" id="1" placeholder="2º Respuesta">
+            <input type="text" id="2" placeholder="3º Respuesta">
+            <input type="text" id="3" placeholder="4º Respuesta">
+            <input type="text" id="correcte" placeholder="Respuesta correcta">
+            <input type="button" id="cancelar3" value="Cancelar">
+            <input type="button" id="aceptarCrear" value="Crear">
+        </div>
+    </div>
+
+    <div id="aviso" class="ocultar">
+        <div class="overlay"></div>
+        <div class="avisoContainer">
+            <h3>Se ha actualizado con éxito</h3>
+        </div>
+    </div>
+
+
     <div class="tablaContainer">
         <table style="border-collapse: collapse;">
             <thead>
@@ -50,6 +73,7 @@
             <tbody id="panel"></tbody>
         </table>
     </div>
+    
     <script src="js/crud.js"></script>
 </body>
 </html>
