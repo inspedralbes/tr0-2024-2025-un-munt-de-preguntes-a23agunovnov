@@ -7,9 +7,8 @@ fetch('../back/getPreguntes.php?quantPreg='+quantPreg)
 });
 
 let data;
-let iterador; // Itera por cada pregunta
- // Al cargar la página web, comience la función del contador
-let totalTime; // Duración del contador
+let iterador;
+let totalTime;
 let estatDeLaPartida;
 
 function jugar(dataRecibida){

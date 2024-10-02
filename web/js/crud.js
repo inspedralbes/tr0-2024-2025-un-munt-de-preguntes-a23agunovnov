@@ -161,6 +161,7 @@ function guardarPreg(){
     }
 }
 
+//Aviso si la orden se ejecutó correctamente
 function aviso(ok){
     if(ok){
         document.getElementById('editar').classList.replace("mostrar", "ocultar");

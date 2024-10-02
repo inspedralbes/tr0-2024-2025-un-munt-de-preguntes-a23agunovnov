@@ -40,6 +40,7 @@
         }
     }
 
+    //Insertar preguntas
     foreach($data['preguntes'] as $row){
         $pregunta = $row['pregunta'];
         $pregunta = mysqli_real_escape_string($conn, $pregunta);
@@ -53,6 +54,7 @@
         }
     }
 
+    //Insertar respuestas
     foreach($data['preguntes'] as $row){
         $idPreg = $row['id'];
         $idResp = -1;

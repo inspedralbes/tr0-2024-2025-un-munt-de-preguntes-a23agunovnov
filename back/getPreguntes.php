@@ -43,36 +43,6 @@
         return $objPreg;
     }
 
-    // function mezclarPreguntas($preguntes, $respostes){
-    //     $data = [];
-    //     $numerosRandom = numerosRandom(0,29);
-    //     $pregArray = convert($preguntes);
-
-    //     for($i = 0; $i < $quantPreg; $i++){
-    //         $obj = new stdClass();
-    //         $obj -> id = $pregArray[$numerosRandom[$i]]['id'];
-    //         $obj -> pregunta = $pregArray[$numerosRandom[$i]]['pregunta'];
-    //         $respuestas = [];
-    //         $index = 0;
-    //         foreach($respostes as $rta){
-    //             if($rta['idPreg'] == $pregArray[$numerosRandom[$i]]['id']){
-    //                 $respuestas[] = $rta['resposta'];
-    //                 if($rta['correcte'] == 1){
-    //                     $resposta_correcte[] = $index;
-    //                 }
-    //                 $index++;
-    //             }
-    //         }
-    //         $obj -> respostes = $respuestas;
-    //         //$obj -> resposta_correcte = $resposta_correcte;
-    //         $obj -> imatge = $pregArray[$numerosRandom[$i]]['imatge'];
-    //         $data[] = json_decode(json_encode($obj), true);
-    //     }
-    //     $_SESSION['respostes'] = $resposta_correcte;
-
-    //     return $data;
-    // }
-
     function convert($querySQL){
         $array = [];
         foreach($querySQL as $query){
