@@ -1,4 +1,4 @@
-const quantPreg = 10;
+const quantPreg = 30;
 
 fetch('../back/getPreguntes.php?quantPreg='+quantPreg)
 .then(response => response.json())
@@ -8,8 +8,8 @@ fetch('../back/getPreguntes.php?quantPreg='+quantPreg)
 
 let data;
 let iterador = 0; // Itera por cada pregunta
-window.onload = updateClock; //Al cargar la página web, comience la función del contador
-let totalTime = 10; // Duración del contador
+window.onload = updateClock; // Al cargar la página web, comience la función del contador
+let totalTime = 20; // Duración del contador
 let estatDeLaPartida = {
   rtasFetas: new Array()
 };
@@ -22,11 +22,11 @@ function jugar(dataRecibida){
 function mostrarPreguntes(indice){
   let htmlString = '';
   setTimeout(() => {
-    document.getElementById("pregunta").innerHTML = data[indice].pregunta;
-    document.getElementById("portada").setAttribute('src', data[indice].imatge);
-    document.getElementById("portada").setAttribute('alt', data[indice].pregunta+".jpg");
-    for(let j = 0; j < data[indice].respostes.length; j++){
-      htmlString += `<button class="btn" id=${j} idResp="${j}" name="boton">${data[indice].respostes[j]}</button>`
+    document.getElementById("pregunta").innerHTML = data.preguntes[indice].pregunta;
+    document.getElementById("portada").setAttribute('src', data.preguntes[indice].imatge);
+    document.getElementById("portada").setAttribute('alt', data.preguntes[indice].pregunta+".jpg");
+    for(let j = 0; j < data.respostes[data.preguntes[indice].id].length; j++){
+      htmlString += `<button class="btn" id=${j} idResp="${j}" name="boton">${data.respostes[data.preguntes[indice].id][j]}</button>`
     }
     document.getElementById("respuestas").innerHTML = htmlString;
   }, 200);
@@ -65,24 +65,22 @@ document.getElementById('respuestas').addEventListener('click', e => {
 });
 
 // REACCIÓN AL PULSAR
-function pulsar(j){
-  if(iterador < data.length-1){
+function pulsar(j){ 
     // deshabilitar que pueda tocar otras opciones al pulsar el botón
     document.querySelectorAll(".btn").forEach(boton => {
       boton.classList.add("disabled");
     });
 
+    let valorRta = document.getElementById(j).textContent;
+
     estatDeLaPartida.rtasFetas[iterador] = {
-      idPreg: iterador,
-      idResp: j
+      nPreg: data.preguntes[iterador].id,
+      idResp: valorRta
     };
 
     fetch('../back/validar.php',{
       method: 'POST',
-      body: JSON.stringify({
-        idPreg: iterador,
-        idResp: j
-    })
+      body: JSON.stringify(estatDeLaPartida.rtasFetas[iterador])
     })
     .then(response => response.json())
     .then(data => {
@@ -96,9 +94,7 @@ function pulsar(j){
 
     iterador++;
     mostrarPreguntes(iterador);
-  }
 }
-
 
 document.getElementById('playAgain').addEventListener("click", reiniciar);
 

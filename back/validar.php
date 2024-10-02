@@ -2,11 +2,11 @@
     session_start();
     $validar = json_decode(file_get_contents('php://input'),true);
 
-    $idPreg = $validar['idPreg'];
-    $idResp = $validar['idResp'];
+    $nPreg = $validar['nPreg']; // = 0
+    $valorResp = $validar['idResp']; // = 0
 
     $isOk = false;
-    if($_SESSION['respostes'][$idPreg] == $idResp){
+    if($_SESSION['respostes'][$nPreg] == $valorResp){
         $isOk = true;
     }
 

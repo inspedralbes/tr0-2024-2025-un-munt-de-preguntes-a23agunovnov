@@ -13,7 +13,7 @@ if ($data === null) {
 
 $iterador = 0;
 foreach($data as $rta){
-    if($_SESSION['respostes'][$iterador] == $rta['idResp']){
+    if($_SESSION['respostes'][$rta['nPreg']] == $rta['idResp']){
         $score->numOk++;
     }
     $score->total++;

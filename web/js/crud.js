@@ -1,10 +1,10 @@
-let preguntes;
+let preguntes = {};
 
 fetch("../back/admin/getTablePreg.php")
 .then(response => response.json())
 .then(data => {
-    mostrar(data);
-    preguntes = data;
+    mostrar(data),
+    preguntes = toObject(data)
 });
 
 const panel = document.getElementById("panel");
@@ -26,6 +26,14 @@ function mostrar(data){
     });
 }
 
+function toObject(data){
+    let aux = {};
+    data.forEach(preg => {
+        aux[preg.id] = preg;
+    })
+    return aux;
+}
+
 //Cerrar ventana de editar
 document.getElementById('cancelar1').addEventListener('click', function cerrarEditar(){
     document.getElementById('editar').classList.replace("mostrar", "ocultar");
@@ -41,7 +49,7 @@ document.getElementById('cancelar3').addEventListener('click', function cerrarBo
 
 //Escuchando clicks tanto en editar como en borrar, para llevar a una función u a otra
 document.getElementById('panel').addEventListener('click', e => {
-    idPreg = e.target.getAttribute('idPreg')-1;
+    idPreg = e.target.getAttribute('idPreg');
     if(e.target.classList.contains('editarbtn')){
         editarPreg(idPreg);
     }else if(e.target.classList.contains('borrarbtn') || e.target.closest('.borrarbtn')){
@@ -54,10 +62,12 @@ document.getElementById('crearbtn').addEventListener('click', crearPreg);
 
 let respOriginal = [];
 
+let objPreg = new Object();
 function editarPreg(idPreg){
+    //let preguntesMap = {};
     htmlString = "";
     let indexResp = 0;
-    document.getElementById('idPreg').innerHTML = '<h3>ID: '+(idPreg+1)+'</h3>'; //CUIDADO CON ESTE ID, LE SUMO UNO PARA QUE COINCIDA CON LA TABLA, AL GUARDAR DATOS, RESTARLE UNO
+    document.getElementById('idPreg').innerHTML = '<h3>ID: '+(idPreg)+'</h3>'; //CUIDADO CON ESTE ID, LE SUMO UNO PARA QUE COINCIDA CON LA TABLA, AL GUARDAR DATOS, RESTARLE UNO
     document.getElementById('editar').classList.replace("ocultar", "mostrar");
     document.getElementById('pregunta').value = preguntes[idPreg]['pregunta'];
     document.getElementById('imatgeLink').value = preguntes[idPreg]['imatge'];
@@ -68,10 +78,9 @@ function editarPreg(idPreg){
     });
     document.getElementById('respuestas').innerHTML = htmlString;
     document.getElementById('respCorrecte').value = preguntes[idPreg]['resposta_correcte'];
-    document.getElementById('guardar').setAttribute('idPreg', idPreg+1);
+    document.getElementById('guardar').setAttribute('idPreg', idPreg);
 
     document.getElementById('guardar').addEventListener('click', function guardar(){
-        let objPreg = new Object();
         objPreg.idPreg = document.getElementById('guardar').getAttribute('idPreg');
         objPreg.pregunta = document.getElementById('pregunta').value;
         objPreg.imatge = document.getElementById('imatgeLink').value;
@@ -127,7 +136,6 @@ function guardarPreg(){
     }else{
         alert("La respuesta correcta no coincide");
     }
-    
 }
 
 function aviso(ok){
@@ -137,6 +145,7 @@ function aviso(ok){
         //mostrar(preguntes);
         setTimeout(function(){document.getElementById('aviso').classList.replace("mostrar", "ocultar")}, 1000)
     }else{
+        console.log("ERROR");
         alert("Ha ocurrido un error");
     }
 };
