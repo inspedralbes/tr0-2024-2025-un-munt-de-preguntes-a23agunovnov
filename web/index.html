@@ -10,15 +10,21 @@
     <div id="padre">
         <div id="container">
             <div id="subcontainer">
-                <h1 id="contador" style="text-align: center;" id="contador"></h1>
-                <h3 id="pregunta" class="center"></h3>
-                <div class="imgContainer">
-                    <img id="portada" src="" alt="">
+                <div id="jugar" class="show">
+                    <h1 id="contador" style="text-align: center;" id="contador"></h1>
+                    <h3 id="pregunta" class="center"></h3>
+                    <div class="imgContainer">
+                        <img id="portada" src="" alt="">
+                    </div>
+                    <div id="respostes"></div>
                 </div>
-                <div id="respuestas"></div>
+                <div id="resultadoFinal" class="hidden">
+                    <h2 class="tiempoAcabado">El tiempo se ha acabado</h2>
+                    <span id="score"></span>
+                    <button id="enviarScore" class="hidden btnEnd">Enviar formulario</button>
+                    <button id="playAgain" class="hidden btnEnd">Jugar de nuevo</button>
+                </div>
             </div>
-            <button id="enviarScore" class="hidden btnEnd">Enviar formulario</button>
-            <button id="playAgain" class="hidden btnEnd">Jugar de nuevo</button>
         </div>
     </div>
     <script src="js/action.js"></script>

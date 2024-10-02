@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar">
         <h1 id="title">Panel de administrador</h1>
-        <button id="crearbtn">Crear pregunta</button>
+        <button class="raleway" style="font-weight: bold;" id="crearbtn">Crear pregunta</button>
     </nav>
 
     <div id="editar" class="ocultar">
@@ -25,12 +25,14 @@
             <span>
                 <div id="idPreg"></div>
             </span>
-            <input class="campo" id="pregunta" type="text">
-            <input class="campo" id="imatgeLink" type="text">
-            <div id="respuestas" class="editarResp gridResp">  </div>
-            <span style="display: flex; justify-content: center; margin: 0;">
-                <input class="campo" style="text-align: center; width: 100px; background-color: #eaffe4;" id="respCorrecte" type="text"><br>
-            </span>
+            <div class="espacio">
+                <input class="campo" id="pregunta" type="text">
+                <input class="campo" id="imatgeLink" type="text">
+                <div id="respuestas" class="editarResp gridResp">  </div>
+                <span style="display: flex; justify-content: center; margin: 0;">
+                    <input class="campo correcte" style="width: 50%;" id="respCorrecte" type="text"><br>
+                </span>
+            </div>
             <div class="botones">
                 <input type="button" class="boton" id="cancelar1" value="Cancelar">
                 <input type="button" class="botonAzul" id="guardar" value="Guardar" idPreg="">
@@ -60,19 +62,23 @@
                 <h3>Crear pregunta</h3>
                 <img id="cancelarX3" style="cursor: pointer;" src="img/cancel-01-stroke-rounded.svg" alt="cerrar">
             </div>
-            <input type="text" style="margin-top: 10px;" class="campo" id="nuevaPreg" placeholder="Pregunta">
-            <input type="text" class="campo" id="nuevaImatge" placeholder="Imatge">
-            <div class="containRtas">
-                <div>
-                    <input type="text" class="campo" id="0" placeholder="1º Respuesta">
-                    <input type="text" class="campo" id="2" placeholder="3º Respuesta">
+            <div class="espacio">
+                <input type="text" style="margin-top: 10px;" class="campo" id="nuevaPreg" placeholder="Escribe el nombre de la película">
+                <input type="text" class="campo" id="nuevaImatge" placeholder="Añade el link de la imágen">
+                <div class="containRtas">
+                    <div>
+                        <input type="text" class="campo" id="0" placeholder="1º Respuesta">
+                        <input type="text" class="campo" id="2" placeholder="3º Respuesta">
+                    </div>
+                    <div>
+                        <input type="text" class="campo" id="1" placeholder="2º Respuesta">
+                        <input type="text" class="campo" id="3" placeholder="4º Respuesta">
+                    </div>
                 </div>
-                <div>
-                    <input type="text" class="campo" id="1" placeholder="2º Respuesta">
-                    <input type="text" class="campo" id="3" placeholder="4º Respuesta">
+                <div style="display: flex; justify-content: center;">
+                    <input type="text" class="campo correcte" style="width: 50%;" id="correcte" placeholder="Respuesta correcta">
                 </div>
             </div>
-            <input type="text" class="campo" id="correcte" placeholder="Respuesta correcta">
             <div class="botones">
                 <input type="button" class="boton" id="cancelar3" value="Cancelar">
                 <input type="button" class="botonAzul" id="aceptarCrear" value="Crear">
@@ -83,7 +89,7 @@
     <div id="aviso" class="ocultar">
         <div class="overlay"></div>
         <div class="avisoContainer">
-            <h3>Se ha actualizado con éxito</h3>
+            <h3 class="raleway">Se ha actualizado con éxito</h3>
         </div>
     </div>
 

@@ -7,29 +7,41 @@ fetch('../back/getPreguntes.php?quantPreg='+quantPreg)
 });
 
 let data;
-let iterador = 0; // Itera por cada pregunta
-window.onload = updateClock; // Al cargar la página web, comience la función del contador
-let totalTime = 20; // Duración del contador
-let estatDeLaPartida = {
-  rtasFetas: new Array()
-};
+let iterador; // Itera por cada pregunta
+ // Al cargar la página web, comience la función del contador
+let totalTime; // Duración del contador
+let estatDeLaPartida;
 
 function jugar(dataRecibida){
+  iterador = 0;
+  totalTime = 2;
+  estatDeLaPartida = {
+    rtasFetas: new Array()
+  };
+  updateClock();
   data = dataRecibida;
   mostrarPreguntes(iterador);
 }
 
-function mostrarPreguntes(indice){
+function mostrarPreg(indice){
   let htmlString = '';
-  setTimeout(() => {
-    document.getElementById("pregunta").innerHTML = data.preguntes[indice].pregunta;
-    document.getElementById("portada").setAttribute('src', data.preguntes[indice].imatge);
-    document.getElementById("portada").setAttribute('alt', data.preguntes[indice].pregunta+".jpg");
-    for(let j = 0; j < data.respostes[data.preguntes[indice].id].length; j++){
-      htmlString += `<button class="btn" id=${j} idResp="${j}" name="boton">${data.respostes[data.preguntes[indice].id][j]}</button>`
-    }
-    document.getElementById("respuestas").innerHTML = htmlString;
-  }, 200);
+  document.getElementById("pregunta").innerHTML = data.preguntes[indice].pregunta;
+  document.getElementById("portada").setAttribute('src', data.preguntes[indice].imatge);
+  document.getElementById("portada").setAttribute('alt', data.preguntes[indice].pregunta+".jpg");
+  for(let j = 0; j < data.respostes[data.preguntes[indice].id].length; j++){
+    htmlString += `<button class="btn" id=${j} idResp="${j}" name="boton">${data.respostes[data.preguntes[indice].id][j]}</button>`
+  }
+  document.getElementById("respostes").innerHTML = htmlString;
+}
+
+function mostrarPreguntes(index){
+  if(index == 0){
+    mostrarPreg(index);
+  }else{
+    setTimeout(() => {
+      mostrarPreg(index);
+    }, 200);
+  }
 }
 
 //CONTADOR
@@ -47,18 +59,19 @@ function updateClock(){
     })
     .then(response => response.json())
     .then(score => {
-      htmlString = `<h2 class="tiempoAcabado">El tiempo se ha acabado</h2><h3 id="rtas">Respuestas correctas: ${score.numOk} / ${score.total}</h3>`;
-      document.getElementById('subcontainer').innerHTML = htmlString;
-      console.log(score)
+      document.getElementById('jugar').classList.replace('show', 'hidden');
+      document.getElementById('resultadoFinal').classList.replace('hidden', 'show');
+      htmlString = `<h3 id="rtas">Respuestas correctas: ${score.numOk} / ${score.total}</h3>`;
+      document.getElementById('score').innerHTML = htmlString;
     })
     .catch(error => console.log('Error: '+error));
 
-    document.getElementById('playAgain').classList.remove("hidden");
-    document.getElementById('enviarScore').classList.remove("hidden");
+    document.getElementById('playAgain').classList.remove("hidden"); //IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+    document.getElementById('enviarScore').classList.remove("hidden"); //IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
   }
 }
 
-document.getElementById('respuestas').addEventListener('click', e => {
+document.getElementById('respostes').addEventListener('click', e => {
   if(e.target.classList.contains('btn')){
     pulsar(e.target.getAttribute('idResp'));
   }
@@ -91,7 +104,6 @@ function pulsar(j){
       }
     })
     .catch(error => console.log("Error: " + error));
-
     iterador++;
     mostrarPreguntes(iterador);
 }
@@ -107,5 +119,13 @@ function reiniciar(){
     }
   })
   .catch(error => console.log("Error: "+error));
-  window.location.href="index.html";
+
+  document.getElementById('jugar').classList.replace("hidden", "show");
+  document.getElementById('resultadoFinal').classList.replace("show", "hidden");
+  
+  fetch('../back/getPreguntes.php?quantPreg='+quantPreg)
+  .then(response => response.json())
+  .then(dataRecibida => {
+    jugar(dataRecibida);
+  });
 }

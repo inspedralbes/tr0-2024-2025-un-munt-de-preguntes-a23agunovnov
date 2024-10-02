@@ -36,10 +36,10 @@ body{
     margin-bottom: 0px;
 }
 
-/* #respuestas{
+#respostes{
     display: flex;
     flex-direction: column;
-} */
+}
 
 .center{
     text-align: center;
@@ -88,6 +88,13 @@ body{
     display: none;
 }
 
+.show{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .hover:hover{
     background-color: #e6f4ff;
 }
@@ -118,7 +125,7 @@ body{
 
 .editarContainer{
     width: 400px;
-    height: 465px;
+    height: 460px;
     background-color: white;
     border-radius: 10px;
     position: fixed;
@@ -254,12 +261,24 @@ span #idPreg{
     border-radius: 10px;
 }
 
+.correcte{
+    text-align: center;
+    width: 100px;
+    background-color: #eaffe4;
+}
+
 .crearContainer{
     width: 400px;
     height: 400px;
     background-color: white;
     position: absolute;
     z-index: 20;
+}
+
+.espacio{
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .diseñoContainer h3{
@@ -275,7 +294,8 @@ span #idPreg{
 
 .gridResp{
     display: grid;
-    grid-template-columns:200px 200px;
+    grid-template-columns:190px 190px;
+    justify-content: center;
 }
 
 .containRtas{
@@ -310,15 +330,19 @@ span #idPreg{
 
 #crearbtn{
     cursor: pointer;
-    background-color: #e6f4ff;
-    border: 1px solid #b3deff;
+    background-color: #1696ff; 
+    border: 1px solid #148ff3;
+    color: white;
     padding: 10px;
     border-radius: 5px;
 }
 
+#crearbtn:hover{
+    background-color: #1278cc;
+}
 
 .avisoContainer{
-    width: 400;
+    width: 350px;
     height: 80px;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
@@ -329,6 +353,7 @@ span #idPreg{
     align-items: center;
     z-index: 20;
 }
+
 
 .ocultar{
     display: none;
@@ -385,5 +410,3 @@ tr th{
     background: transparent;
     border: none;
 }
-
-
