@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    margin-bottom: 50px;
 }
 
 #padre{
@@ -35,10 +36,10 @@ body{
     margin-bottom: 0px;
 }
 
-#respuestas{
+/* #respuestas{
     display: flex;
     flex-direction: column;
-}
+} */
 
 .center{
     text-align: center;
@@ -117,10 +118,9 @@ body{
 
 .editarContainer{
     width: 400px;
-    height: 500px;
+    height: 465px;
     background-color: white;
     border-radius: 10px;
-    padding: 10px;
     position: fixed;
     z-index: 20;
 }
@@ -131,12 +131,94 @@ body{
 
 .borrarContainer{
     width: 400px;
-    height: 100px;
+    height: 155px;
     background-color: white;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #c7c7c7;
     position: fixed;
     z-index: 20;
+}
+
+.rotulo{
+    display: flex;
+    justify-content: space-between;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom: 1px solid #c7c7c7;
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+}
+
+.rotulo h3{
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    margin: 0;
+}
+
+.botones{
+    border-top: 1px solid #c7c7c7;
+    padding: 15px;
+    display: flex;
+    justify-content: right;
+}
+
+.raleway{
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+}
+
+.boton{
+    font-size: 15px;
+    background: none;
+    padding: 3px;
+    height: 27px;
+    width: 100px;
+    border-radius: 7px;
+    border: 1px solid #c7c7c7;
+    margin-right: 7px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.boton:hover{
+    background-color: #eeeeee;
+}
+
+.botonRojo{
+    font-size: 15px;
+    background-color: #e92121;
+    color: white;
+    padding: 3px;
+    height: 27px;
+    width: 100px;
+    border-radius: 7px;
+    border: 1px solid #c53c3c;
+    font-family: "Raleway", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.botonRojo:hover{
+    background-color: #c51919;
+}
+
+.botonAzul{
+    font-size: 15px;
+    background-color: #1696ff;
+    color: white;
+    padding: 3px;
+    height: 27px;
+    width: 100px;
+    border-radius: 7px;
+    border: 1px solid #148ff3;
+    font-family: "Raleway", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.botonAzul:hover{
+    background-color: #1278cc;
 }
 
 .borrarbtn{
@@ -149,19 +231,91 @@ body{
     max-width: 100%;
 }
 
+.diseñoContainer{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+span #idPreg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    border: 1px solid #c7c7c7;
+    border-radius: 10px;
+}
+
 .crearContainer{
     width: 400px;
-    height: 500px;
+    height: 400px;
     background-color: white;
-    border-radius: 10px;
-    padding: 10px;
     position: absolute;
     z-index: 20;
 }
 
+.diseñoContainer h3{
+    text-align: center;
+}
+
+.campo{
+    padding: 15px;
+    border: 1px solid #c7c7c7;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.gridResp{
+    display: grid;
+    grid-template-columns:200px 200px;
+}
+
+.containRtas{
+    display: flex;
+}
+
+.containRtas div{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containRtas input{
+    width: 150px;
+    text-align: center;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    border-bottom: 1px solid #c7c7c7;
+    margin-bottom: 20px;
+}
+
+#title{
+    flex-grow: 1;
+    text-align: center;
+}
+
 #crearbtn{
     cursor: pointer;
+    background-color: #e6f4ff;
+    border: 1px solid #b3deff;
+    padding: 10px;
+    border-radius: 5px;
 }
+
 
 .avisoContainer{
     width: 400;
@@ -183,6 +337,12 @@ body{
 .mostrar{
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .tablaContainer{

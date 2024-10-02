@@ -3,51 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Panel de administrador</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1 style="text-align:center">Panel de administrador</h1>
-    <hr>
-    <button id="crearbtn">Crear pregunta</button>
+    <nav class="navbar">
+        <h1 id="title">Panel de administrador</h1>
+        <button id="crearbtn">Crear pregunta</button>
+    </nav>
 
     <div id="editar" class="ocultar">
         <div class="overlay"></div>
-        <div class="editarContainer">
-            <span id="idPreg"></span>
-            <input id="pregunta" type="text">
-            <input id="imatgeLink" type="text">
-            <div id="respuestas" style="display: flex; flex-direction: column; width: 70px;" class="editarResp">  </div>
-            <input id="respCorrecte" type="text"><br>
-            <input type="button" id="cancelar1" value="Cancelar">
-            <input type="button" id="guardar" value="Guardar" idPreg="">
+        <div class="editarContainer diseñoContainer">
+            <div class="rotulo">
+                <h3>Editar pregunta</h3>
+                <img id="cancelarX2" style="cursor: pointer;" src="img/cancel-01-stroke-rounded.svg" alt="cerrar">
+            </div>
+            <span>
+                <div id="idPreg"></div>
+            </span>
+            <input class="campo" id="pregunta" type="text">
+            <input class="campo" id="imatgeLink" type="text">
+            <div id="respuestas" class="editarResp gridResp">  </div>
+            <span style="display: flex; justify-content: center; margin: 0;">
+                <input class="campo" style="text-align: center; width: 100px; background-color: #eaffe4;" id="respCorrecte" type="text"><br>
+            </span>
+            <div class="botones">
+                <input type="button" class="boton" id="cancelar1" value="Cancelar">
+                <input type="button" class="botonAzul" id="guardar" value="Guardar" idPreg="">
+            </div>
         </div>
     </div>
 
     <div id="borrar" class="ocultar">
         <div class="overlay"></div>
         <div class="borrarContainer">
-            <center>
-                <h3>¿Seguro que desea borrar la pregunta?</h3>
-            </center>
-            <input type="button" id="cancelar2" value="Cancelar">
-            <input type="button" id="borrarAceptar" value="Borrar">
+            <div class="rotulo">
+                <h3>¿Borrar pregunta?</h3>
+                <img id="cancelarX" style="cursor: pointer;" src="img/cancel-01-stroke-rounded.svg" alt="cerrar">
+            </div>
+            <p class="raleway" style="margin-left: 15px; font-size: 17px; color: #4d4d4d;">Esto no se puede deshacer</p>
+            <div class="botones">
+                <input type="button" class="boton" id="cancelar2" value="Cancelar">
+                <input type="button" class="botonRojo" id="borrarAceptar" value="Borrar">
+            </div>
         </div>
     </div>
 
     <div id="crear" class="ocultar">
         <div class="overlay"></div>
-        <div class="crearContainer">
-            <h3>Crear pregunta</h3>
-            <input type="text" id="nuevaPreg" placeholder="Pregunta">
-            <input type="text" id="nuevaImatge" placeholder="Imatge">
-            <input type="text" id="0" placeholder="1º Respuesta">
-            <input type="text" id="1" placeholder="2º Respuesta">
-            <input type="text" id="2" placeholder="3º Respuesta">
-            <input type="text" id="3" placeholder="4º Respuesta">
-            <input type="text" id="correcte" placeholder="Respuesta correcta">
-            <input type="button" id="cancelar3" value="Cancelar">
-            <input type="button" id="aceptarCrear" value="Crear">
+        <div class="crearContainer diseñoContainer">
+            <div class="rotulo">
+                <h3>Crear pregunta</h3>
+                <img id="cancelarX3" style="cursor: pointer;" src="img/cancel-01-stroke-rounded.svg" alt="cerrar">
+            </div>
+            <input type="text" style="margin-top: 10px;" class="campo" id="nuevaPreg" placeholder="Pregunta">
+            <input type="text" class="campo" id="nuevaImatge" placeholder="Imatge">
+            <div class="containRtas">
+                <div>
+                    <input type="text" class="campo" id="0" placeholder="1º Respuesta">
+                    <input type="text" class="campo" id="2" placeholder="3º Respuesta">
+                </div>
+                <div>
+                    <input type="text" class="campo" id="1" placeholder="2º Respuesta">
+                    <input type="text" class="campo" id="3" placeholder="4º Respuesta">
+                </div>
+            </div>
+            <input type="text" class="campo" id="correcte" placeholder="Respuesta correcta">
+            <div class="botones">
+                <input type="button" class="boton" id="cancelar3" value="Cancelar">
+                <input type="button" class="botonAzul" id="aceptarCrear" value="Crear">
+            </div>
         </div>
     </div>
 

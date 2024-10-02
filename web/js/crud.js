@@ -21,7 +21,7 @@ function mostrar(data){
             htmlString += resp+" ";
         });
         htmlString += '</td>';
-        htmlString += '<td class="correcteWidth"><div class="flex-separado"><div>'+preg['resposta_correcte']+'</div><div style="display:flex; align-items:center"><button class="editarbtn" idPreg="'+preg['id']+'">Editar</button><button class="noStyleBTN borrarbtn" idPreg="'+preg['id']+'"><img style="width: 25px" src="img/trash.png" alt="borrar"></button></div></div></td></tr>';
+        htmlString += '<td class="correcteWidth"><div class="flex-separado"><div>'+preg['resposta_correcte']+'</div><div style="display:flex; align-items:center"><button class="editarbtn" idPreg="'+preg['id']+'">Editar</button><button id="borrarbtn" class="noStyleBTN borrarbtn" idPreg="'+preg['id']+'"><img idPreg="'+preg['id']+'" style="width: 25px" src="img/trash.png" alt="borrar"></button></div></div></td></tr>';
         panel.innerHTML = htmlString;
     });
 }
@@ -35,19 +35,28 @@ function toObject(data){
 }
 
 //Cerrar ventana de editar
-document.getElementById('cancelar1').addEventListener('click', function cerrarEditar(){
+document.getElementById('cancelar1').addEventListener('click', function(){
+    document.getElementById('editar').classList.replace("mostrar", "ocultar");
+});
+document.getElementById('cancelarX2').addEventListener('click', function(){
     document.getElementById('editar').classList.replace("mostrar", "ocultar");
 });
 //Cerrar ventana de borrar
-document.getElementById('cancelar2').addEventListener('click', function cerrarBorrar(){
+document.getElementById('cancelar2').addEventListener('click', function(){
+    document.getElementById('borrar').classList.replace("mostrar", "ocultar");
+});
+document.getElementById('cancelarX').addEventListener('click', function(){
     document.getElementById('borrar').classList.replace("mostrar", "ocultar");
 });
 //Cerrar ventana de crear
-document.getElementById('cancelar3').addEventListener('click', function cerrarBorrar(){
+document.getElementById('cancelar3').addEventListener('click', function(){
+    document.getElementById('crear').classList.replace("mostrar", "ocultar");
+});
+document.getElementById('cancelarX3').addEventListener('click', function(){
     document.getElementById('crear').classList.replace("mostrar", "ocultar");
 });
 
-//Escuchando clicks tanto en editar como en borrar, para llevar a una función u a otra
+//Escuchando clicks tanto en EDITAR como en BORRAR, para llevar a una función u a otra
 document.getElementById('panel').addEventListener('click', e => {
     idPreg = e.target.getAttribute('idPreg');
     if(e.target.classList.contains('editarbtn')){
@@ -56,7 +65,7 @@ document.getElementById('panel').addEventListener('click', e => {
         borrarPreg(idPreg);
     }
 });
-
+//Escuchando clicks en CREAR
 document.getElementById('crearbtn').addEventListener('click', crearPreg);
 
 
@@ -72,7 +81,7 @@ function editarPreg(idPreg){
     document.getElementById('pregunta').value = preguntes[idPreg]['pregunta'];
     document.getElementById('imatgeLink').value = preguntes[idPreg]['imatge'];
     preguntes[idPreg]['respostes'].forEach(resp => {
-        htmlString += '<input type="text" id="'+indexResp+'" value="'+resp+'">'
+        htmlString += '<input class="campo" type="text" id="'+indexResp+'" value="'+resp+'">'
         respOriginal[indexResp] = resp;
         indexResp++;
     });
@@ -107,6 +116,20 @@ function editarPreg(idPreg){
 function borrarPreg(idPreg){
     document.getElementById('borrar').classList.replace("ocultar", "mostrar");
     //Y aca hace el fetch con el valor del ID para borrar esa pregunta con ese ID, sus 4 respuestas de la otra tabla (primero esto)
+    document.getElementById('borrarbtn').addEventListener('click', borrar(idPreg));
+}
+
+function borrar(idPreg){
+    document.getElementById('borrarAceptar').addEventListener('click', function(){
+        fetch("../back/admin/delete.php",{
+            method:'POST',
+            body:JSON.stringify(idPreg)
+        })
+        .then(response => response.json())
+        .then(data => {
+            aviso(data);
+        })
+    })
 }
 
 function crearPreg(){
@@ -119,7 +142,7 @@ function guardarPreg(){
     newPreg.pregunta = document.getElementById('nuevaPreg').value;
     newPreg.imatge = document.getElementById('nuevaImatge').value;
     newPreg.respuestas = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i++){
         newPreg.respuestas[i] = document.getElementById(i).value;
     }
     newPreg.correcte = document.getElementById('correcte').value;
@@ -131,7 +154,7 @@ function guardarPreg(){
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            aviso(data)
         });
     }else{
         alert("La respuesta correcta no coincide");
@@ -141,9 +164,17 @@ function guardarPreg(){
 function aviso(ok){
     if(ok){
         document.getElementById('editar').classList.replace("mostrar", "ocultar");
+        document.getElementById('crear').classList.replace("mostrar", "ocultar");
+        document.getElementById('borrar').classList.replace("mostrar", "ocultar");
         document.getElementById('aviso').classList.replace("ocultar", "mostrar");
         //mostrar(preguntes);
         setTimeout(function(){document.getElementById('aviso').classList.replace("mostrar", "ocultar")}, 1000)
+        fetch("../back/admin/getTablePreg.php")
+        .then(response => response.json())
+        .then(data => {
+            mostrar(data),
+            preguntes = toObject(data)
+        });
     }else{
         console.log("ERROR");
         alert("Ha ocurrido un error");
