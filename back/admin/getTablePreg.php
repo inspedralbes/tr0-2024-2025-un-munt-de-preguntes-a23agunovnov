@@ -2,12 +2,7 @@
 // error_reporting(E_ALL);
 // ini_set("display_errors", 'On');
 
-$host = "localhost";
-$user = "preguntas";
-$pass = "12345";
-$dbname = "TR0";
-
-$conn = new mysqli($host, $user, $pass, $dbname);
+require_once("../conexio.php");
 
 if (!$conn) {
     die("Error: " . mysqli_error($conn));
