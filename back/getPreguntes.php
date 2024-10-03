@@ -5,12 +5,10 @@
 
     error_reporting(E_ALL);
     ini_set("display_errors",'On');
-    
+
     $quantPreg = $_GET['quantPreg'];
     $sql = "SELECT * FROM preguntes ORDER BY RAND() LIMIT $quantPreg;";
     $preguntes = mysqli_query($conn, $sql);
-    // $sql = "SELECT * FROM respostes";
-    // $respostes = mysqli_query($conn, $sql);
 
     if(!isset($_SESSION['preguntes']) || !isset($_SESSION['respostes'])){
         $_SESSION['preguntes'] = guardarPregYResp($preguntes,$conn);
