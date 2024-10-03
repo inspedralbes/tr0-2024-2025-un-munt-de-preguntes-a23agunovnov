@@ -110,14 +110,14 @@ function pulsar(j){
 document.getElementById('playAgain').addEventListener("click", reiniciar);
 
 function reiniciar(){
-  fetch('../back/sessiondestroy.php')
-  .then(response => response.json)
-  .then(data => {
-    if(!data){
-      alert('Ha ocurrido un error');
-    }
-  })
-  .catch(error => console.log("Error: "+error));
+  // fetch('../back/sessiondestroy.php')
+  // .then(response => response.json)
+  // .then(data => {
+  //   if(!data){
+  //     alert('Ha ocurrido un error');
+  //   }
+  // })
+  // .catch(error => console.log("Error: "+error));
 
   document.getElementById('jugar').classList.replace("hidden", "show");
   document.getElementById('resultadoFinal').classList.replace("show", "hidden");

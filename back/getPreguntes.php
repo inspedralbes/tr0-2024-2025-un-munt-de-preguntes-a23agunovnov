@@ -10,9 +10,9 @@
     $sql = "SELECT * FROM preguntes ORDER BY RAND() LIMIT $quantPreg;";
     $preguntes = mysqli_query($conn, $sql);
 
-    if(!isset($_SESSION['preguntes']) || !isset($_SESSION['respostes'])){
+    // if(!isset($_SESSION['preguntes']) || !isset($_SESSION['respostes'])){
         $_SESSION['preguntes'] = guardarPregYResp($preguntes,$conn);
-    }
+    // }
 
     function guardarPregYResp($preguntes, $conn){
         $objPreg = new stdClass();
