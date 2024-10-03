@@ -13,7 +13,7 @@ let estatDeLaPartida;
 
 function jugar(dataRecibida){
   iterador = 0;
-  totalTime = 2;
+  totalTime = 10;
   estatDeLaPartida = {
     rtasFetas: new Array()
   };
