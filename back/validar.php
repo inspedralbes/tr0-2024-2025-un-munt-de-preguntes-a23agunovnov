@@ -1,14 +1,15 @@
 <?php
-    session_start();
-    $validar = json_decode(file_get_contents('php://input'),true);
+session_start();
+$validar = json_decode(file_get_contents('php://input'), true);
 
-    $nPreg = $validar['nPreg']; // = 0
-    $valorResp = $validar['idResp']; // = 0
+$nPreg = $validar['nPreg'];
+$valorResp = $validar['idResp'];
+$isOk = new stdClass;
 
-    $isOk = false;
-    if($_SESSION['respostes'][$nPreg] == $valorResp){
-        $isOk = true;
-    }
+$isOk->ret = false;
+if ($_SESSION['respostes'][$nPreg] == $valorResp) {
+    $isOk->ret = true;
+}
 
-    echo json_encode($isOk);
+echo json_encode($isOk);
 ?>

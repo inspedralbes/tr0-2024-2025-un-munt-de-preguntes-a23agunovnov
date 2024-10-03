@@ -3,9 +3,10 @@
 
     $data = json_decode(file_get_contents('php://input'), true);
     $pregunta = mysqli_real_escape_string($conn, $data['pregunta']);
+    $ok = new stdClass();
 
     updatePreg($data, $pregunta, $conn);
-    $ok = updateResp($data, $conn);
+    $ok->ret = updateResp($data, $conn);
 
     function updatePreg($data, $pregunta, $conn){
         $sql = "UPDATE preguntes SET pregunta = '$pregunta', imatge = '".$data['imatge']."' WHERE id = ".$data['idPreg'];

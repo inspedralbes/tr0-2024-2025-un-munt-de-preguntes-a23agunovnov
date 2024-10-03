@@ -1,10 +1,10 @@
 <?php
-    session_start();
+session_start();
+$destroyed = new stdClass;
+$destroyed->ret = false;
+if (session_destroy()) {
+    $destroyed->ret = true;
+}
 
-    $destroyed = false;
-    if(session_destroy()){
-        $destroyed = true;
-    }
-
-    echo json_encode($destroyed);
+echo json_encode($destroyed);
 ?>

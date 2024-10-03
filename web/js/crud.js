@@ -127,7 +127,7 @@ function borrar(idPreg){
         })
         .then(response => response.json())
         .then(data => {
-            aviso(data);
+            aviso(data['ret']);
         })
     })
 }
