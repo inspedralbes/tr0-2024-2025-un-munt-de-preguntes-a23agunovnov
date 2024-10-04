@@ -1,7 +1,7 @@
 <?php
 include 'conexio.php';
 
-$data = file_get_contents("./data.json");
+$data = file_get_contents("https://opentdb.com/api.php?amount=30&category=11&difficulty=easy&type=multiple");
 $data = json_decode($data, true);
 
 $sql = "DROP TABLE IF EXISTS respostes";
@@ -16,7 +16,6 @@ function createTables($conn)
     $sql = "CREATE TABLE IF NOT EXISTS `preguntes`(
             `id` INT NOT NULL AUTO_INCREMENT ,
             `pregunta` VARCHAR(255) NOT NULL ,
-            `imatge` VARCHAR(500) NOT NULL ,
             PRIMARY KEY (`id`)
         )";
     if ($conn->query($sql)) {
@@ -41,37 +40,51 @@ function createTables($conn)
     }
 }
 
-//Insertar preguntas
-foreach ($data['preguntes'] as $row) {
-    $pregunta = $row['pregunta'];
-    $pregunta = mysqli_real_escape_string($conn, $pregunta);
-    $imatge = $row['imatge'];
+foreach($data['results'] as $row){
+    echo $row['question'].'<br>';
+}
 
-    $sql = "INSERT INTO preguntes(pregunta, imatge) VALUES ('$pregunta', '$imatge')";
+//Insertar preguntas
+foreach ($data['results'] as $row) {
+    $pregunta = $row['question'];
+    $pregunta = mysqli_real_escape_string($conn, $pregunta);
+
+    $sql = "INSERT INTO preguntes(pregunta) VALUES ('$pregunta')";
 
     if (!mysqli_query($conn, $sql)) {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         exit();
     }
+    $idPregs[] = mysqli_insert_id($conn);
 }
 
+
 //Insertar respuestas
-foreach ($data['preguntes'] as $row) {
-    $idPreg = $row['id'];
-    $idResp = -1;
-    foreach ($row['respostes'] as $rta) {
-        $idResp += 1;
-        $resposta = $rta;
-        $correcte = 0;
-        if ($idResp == $row['resposta_correcta']) {
-            $correcte = 1;
-        }
+foreach ($data['results'] as $key => $value) {
+    $aux=[];
+    $idPreg = $idPregs[$key];
+    $idResp = 0;
+    $aux = guardarResp($value);
+    foreach ($aux as $rta) {
+        $resposta = mysqli_real_escape_string($conn, $rta);
+        $correcte = ($rta == $value['correct_answer']) ? 1 : 0;
         $sql = "INSERT INTO respostes(idPreg, resposta, correcte) VALUES ($idPreg, '$resposta', $correcte)";
         if (!mysqli_query($conn, $sql)) {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             exit();
         }
+        $idResp+=1;
     }
+}
+
+function guardarResp($pregunta){
+    $aux = [];
+    foreach ($pregunta['incorrect_answers'] as $key => $value){
+        $aux[$key] = $value;
+    }
+    $aux[3] = $pregunta['correct_answer'];
+    shuffle($aux);
+    return $aux;
 }
 
 $conn->close();

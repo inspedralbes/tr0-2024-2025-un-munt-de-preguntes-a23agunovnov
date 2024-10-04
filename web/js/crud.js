@@ -15,12 +15,12 @@ function mostrar(data){
     htmlString = "";
     data.forEach(preg => {
         htmlString += '<tr class="hover">';
-        htmlString += '<td>'+preg['id']+'</td><td>'+preg['pregunta']+'</td><td class="imatgeWidth"><a href="'+preg['imatge']+'" target="_blank">Imatge Link</a></td>';
-        htmlString += '<td class="respWidth">';
+        htmlString += '<td>'+preg['id']+'</td><td>'+preg['pregunta']+'</td>';
+        htmlString += '<td class="respWidth"><ul>';
         preg['respostes'].forEach(resp => {
-            htmlString += resp+" ";
+            htmlString += '<li>'+resp+'</li>';
         });
-        htmlString += '</td>';
+        htmlString += '</ul></td>';
         htmlString += '<td class="correcteWidth"><div class="flex-separado"><div>'+preg['resposta_correcte']+'</div><div style="display:flex; align-items:center"><button class="editarbtn" idPreg="'+preg['id']+'">Editar</button><button id="borrarbtn" class="noStyleBTN borrarbtn" idPreg="'+preg['id']+'"><img idPreg="'+preg['id']+'" style="width: 25px" src="img/trash.png" alt="borrar"></button></div></div></td></tr>';
         panel.innerHTML = htmlString;
     });

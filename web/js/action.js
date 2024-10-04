@@ -34,8 +34,6 @@ function jugar(dataRecibida){
 function mostrarPreg(indice) {
   let htmlString = '';
   document.getElementById("pregunta").innerHTML = data.preguntes[indice].pregunta;
-  document.getElementById("portada").setAttribute('src', data.preguntes[indice].imatge);
-  document.getElementById("portada").setAttribute('alt', data.preguntes[indice].pregunta + ".jpg");
   for (let j = 0; j < data.respostes[data.preguntes[indice].id].length; j++) {
     htmlString += `<button class="btn" id=${j} idResp="${j}" name="boton">${data.respostes[data.preguntes[indice].id][j]}</button>`
   }
@@ -74,8 +72,8 @@ function updateClock() {
       })
       .catch(error => console.log('Error: ' + error));
 
-    document.getElementById('playAgain').classList.remove("hidden"); //IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-    document.getElementById('enviarScore').classList.remove("hidden"); //IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+    document.getElementById('playAgain').classList.remove("hidden");
+    document.getElementById('enviarScore').classList.remove("hidden");
   }
 }
 
