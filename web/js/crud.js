@@ -185,6 +185,10 @@ function aviso(ok){
         });
     }else{
         console.log("ERROR");
-        alert("Ha ocurrido un error");
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+        });
     }
 };

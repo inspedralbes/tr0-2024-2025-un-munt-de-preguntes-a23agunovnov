@@ -52,6 +52,19 @@ body{
     transition: transform 0.1s ease;
 }
 
+.botonFinal{
+    margin-top: -10px;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    background-color: #ec695b;
+    box-shadow: 0 0 50px -20px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.1s ease;
+}
+
 #jugarbtn:hover{
     transform: scale(1.03);
 }
@@ -83,6 +96,8 @@ body{
     background-color: white;
     width: 100px;
     z-index: 20;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .botonResp:hover{
@@ -143,7 +158,8 @@ body{
 
 .tiempoAcabado{
     color: red;
-    margin-top: 0;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .hidden{

@@ -22,7 +22,7 @@ function jugar(dataRecibida){
   document.getElementById('usuario').classList.replace('show', 'hidden');
   document.getElementById('jugar').classList.replace('hidden', 'show');
   iterador = 0;
-  totalTime = 15;
+  totalTime = 20;
   estatDeLaPartida = {
     rtasFetas: new Array()
   };
