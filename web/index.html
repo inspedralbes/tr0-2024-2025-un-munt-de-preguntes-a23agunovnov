@@ -3,35 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>TR0</title>
 </head>
 <body>
-    <div id="padre">
-        <div id="container">
-            <div id="subcontainer">
-                <div id="usuario" class="show">
-                    <h1>UMDP</h1>
-                    <input id="nom" type="text" class="campo" placeholder="Introduce tu nombre">
-                    <input id="quantPreg" type="number" class="campo" placeholder="Cantidad de pregunas">
-                    <button id="jugarbtn">Jugar</button>
-                </div>
-                <div id="jugar" class="hidden">
-                    <h1 id="contador" style="text-align: center;" id="contador"></h1>
-                    <h3 id="pregunta" class="center"></h3>
-                    <div class="imgContainer">
-                        <img id="portada" src="" alt="">
+    <div class="background">
+        <div id="padre">
+            <div id="container">
+                <div id="subcontainer">
+                    <div id="usuario" class="show">
+                        <h1>UMDP</h1>
+                        <input id="nom" type="text" class="campo" placeholder="Introduce tu nombre">
+                        <input id="quantPreg" type="number" class="campo" placeholder="Cantidad de pregunas">
+                        <button id="jugarbtn">Jugar</button>
                     </div>
-                    <div id="respostes"></div>
-                </div>
-                <div id="resultadoFinal" class="hidden">
-                    <h2 class="tiempoAcabado">El tiempo se ha acabado</h2>
-                    <div id="tablaScore">
-                        
+                    <div id="jugar" class="hidden">
+                        <div class="tiempo">
+                            <h1 id="contador" style="text-align: center;" id="contador"></h1>
+                        </div>
+                        <div class="preguntaContainer">
+                            <h3 id="pregunta" class="center"></h3>
+                            <div class="imgContainer">
+                                <img id="portada" src="" alt="">
+                            </div>
+                        </div>
+                        <div id="respostes"></div>
                     </div>
-                    <span class="flex-column" id="score"></span>
-                    <button id="enviarScore" class="hidden btnEnd">Enviar puntuación</button>
-                    <button id="playAgain" class="hidden btnEnd">Jugar de nuevo</button>
+                    <div id="resultadoFinal" class="hidden">
+                        <h2 class="tiempoAcabado">El tiempo se ha acabado</h2>
+                        <div id="tablaScore">
+                            
+                        </div>
+                        <span class="flex-column" id="score"></span>
+                        <button id="enviarScore" class="hidden btnEnd">Enviar puntuación</button>
+                        <button id="playAgain" class="hidden btnEnd">Jugar de nuevo</button>
+                    </div>
                 </div>
             </div>
         </div>

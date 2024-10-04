@@ -167,8 +167,15 @@ function aviso(ok){
         document.getElementById('editar').classList.replace("mostrar", "ocultar");
         document.getElementById('crear').classList.replace("mostrar", "ocultar");
         document.getElementById('borrar').classList.replace("mostrar", "ocultar");
-        document.getElementById('aviso').classList.replace("ocultar", "mostrar");
-        //mostrar(preguntes);
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Actualizado!",
+            showConfirmButton: false,
+            width: "320px",
+            height: "10px",
+            timer: 1500
+          });
         setTimeout(function(){document.getElementById('aviso').classList.replace("mostrar", "ocultar")}, 1000)
         fetch("../back/admin/getTablePreg.php")
         .then(response => response.json())

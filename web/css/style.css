@@ -1,10 +1,16 @@
 body{
     margin: 0;
-    margin-bottom: 50px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+}
+
+.background{
+    background-image: url("../img/background.png");
+    background-size: cover;
+    background-position: 35px;
 }
 
 #padre{
-    background-color: rgb(210, 210, 210);
     margin: 0;
     height: 100vh;
     display: flex;
@@ -13,15 +19,18 @@ body{
 }
 
 #container{
-    width: 400px;
-    height: 450px;
-    border-radius: 20px;
-    background-color: white;
-    box-shadow: 0 0 50px -20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#jugar{
+    /* width: 400px;
+    height: 450px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 50px -20px; */
 }
 
 #subcontainer{
@@ -29,6 +38,59 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#jugarbtn{
+    margin-bottom: 20px;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 50px -20px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.1s ease;
+}
+
+#jugarbtn:hover{
+    transform: scale(1.03);
+}
+
+.preguntaContainer{
+    width: 400px;
+    height: 200px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 50px -20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botonResp{
+    margin-bottom: 20px;
+    width: 400px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 50px -20px;
+    border: none;
+    transition: transform 0.1s ease;
+}
+
+.tiempo{
+    background-color: white;
+    width: 100px;
+    z-index: 20;
+}
+
+.botonResp:hover{
+    transform: scale(1.05);
+}
+
+#portada{
+    width: 230px;
 }
 
 #contador{

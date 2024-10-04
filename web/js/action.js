@@ -22,7 +22,7 @@ function jugar(dataRecibida){
   document.getElementById('usuario').classList.replace('show', 'hidden');
   document.getElementById('jugar').classList.replace('hidden', 'show');
   iterador = 0;
-  totalTime = 10;
+  totalTime = 15;
   estatDeLaPartida = {
     rtasFetas: new Array()
   };
@@ -37,7 +37,7 @@ function mostrarPreg(indice) {
   document.getElementById("portada").setAttribute('src', data.preguntes[indice].imatge);
   document.getElementById("portada").setAttribute('alt', data.preguntes[indice].pregunta + ".jpg");
   for (let j = 0; j < data.respostes[data.preguntes[indice].id].length; j++) {
-    htmlString += `<button class="btn" id=${j} idResp="${j}" name="boton">${data.respostes[data.preguntes[indice].id][j]}</button>`
+    htmlString += `<button class="botonResp" style="cursor: pointer;" id=${j} idResp="${j}" name="boton">${data.respostes[data.preguntes[indice].id][j]}</button>`
   }
   document.getElementById("respostes").innerHTML = htmlString;
 }
@@ -80,7 +80,7 @@ function updateClock() {
 }
 
 document.getElementById('respostes').addEventListener('click', e => {
-  if (e.target.classList.contains('btn')) {
+  if (e.target.classList.contains('botonResp')) {
     pulsar(e.target.getAttribute('idResp'));
   }
 });
