@@ -61,7 +61,7 @@ body{
     background-color: #ec695b;
     box-shadow: 0 0 50px -20px;
     cursor: pointer;
-    border: none;
+    border: 1px solid black;
     transition: transform 0.1s ease;
 }
 
