@@ -1,32 +1,37 @@
-let data;
 
-async function empezarJuego(){
+let data;
+let iterador;
+let totalTime;
+let estatDeLaPartida;
+let dificultad;
+
+//Comenzar a jugar
+async function empezarJuego() {
   document.getElementById('reglas').classList.replace('showReglas', 'hidden')
   await fetch('../back/getPreguntes.php?quantPreg=' + 30)
-  .then(response => response.json())
-  .then(dataRecibida => {
-    jugar(dataRecibida, dificultad)
-  });
+    .then(response => response.json())
+    .then(dataRecibida => {
+      jugar(dataRecibida, dificultad)
+    });
 }
-  
-  let iterador;
-  let totalTime;
-  let estatDeLaPartida;
 
+//Esperando que se aprete a "Jugar" en la primera ventana
 document.getElementById('jugarbtn').addEventListener('click', mostrarReglas);
 
-function mostrarReglas(){
+//Pasar a la pantalla de instrucciones
+function mostrarReglas() {
   const nom = document.getElementById('nom').value;
-  const dificultad = document.getElementById('dificultad').value;
+  dificultad = document.getElementById('dificultad').value;
   localStorage.setItem("nom", nom);
   localStorage.setItem("dificultat", dificultad);
   document.getElementById('usuario').classList.replace('show', 'hidden');
   document.getElementById('reglas').classList.replace('hidden', 'showReglas')
 }
 
+//Esperando a escuchar el click de "Aceptar" para comenzar el juego
 document.getElementById('empezarJuego').addEventListener('click', empezarJuego);
 
-function jugar(dataRecibida, dificultad){
+function jugar(dataRecibida, dificultad) {
   document.querySelectorAll(".unabled").forEach(boton => {
     boton.classList.remove("unabled");
     boton.classList.remove("disabled");
@@ -35,13 +40,13 @@ function jugar(dataRecibida, dificultad){
   document.getElementById('jugar').classList.replace('hidden', 'show');
 
 
-  
+
   iterador = 0;
-  if(dificultad == "facil"){
+  if (dificultad == "facil") {
     totalTime = 60;
-  }else if(dificultad == "intermedio"){
+  } else if (dificultad == "intermedio") {
     totalTime = 40;
-  }else{
+  } else {
     totalTime = 30;
   }
   estatDeLaPartida = {
@@ -108,36 +113,36 @@ document.getElementById('respostes').addEventListener('click', e => {
 
 document.getElementById('back5').addEventListener("click", masTiempo);
 
-function masTiempo(){
+function masTiempo() {
   document.getElementById('back5').classList.add('disabled');
   document.getElementById('back5').classList.replace('power', 'unabled');
-  totalTime+=5;
+  totalTime += 5;
 }
 
 document.getElementById('next').addEventListener("click", sigPreg);
 
-function sigPreg(){
+function sigPreg() {
   document.getElementById('next').classList.add('disabled');
   document.getElementById('next').classList.replace('power', 'unabled');
 }
 
 document.getElementById('50').addEventListener("click", quitarResp);
 
-function quitarResp(){
+function quitarResp() {
   document.getElementById('50').classList.add('disabled');
   document.getElementById('50').classList.replace('power', 'unabled');
-  fetch('../back/powers/quitarResp.php',  {
+  fetch('../back/powers/quitarResp.php', {
     method: 'POST',
     body: JSON.stringify(data.preguntes[iterador])
   })
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById(data[0]).classList.add('hidden');
-    document.getElementById(data[1]).classList.add('hidden');
-  })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById(data[0]).classList.add('hidden');
+      document.getElementById(data[1]).classList.add('hidden');
+    })
 }
 
-document.getElementById('next').addEventListener("click", function(){
+document.getElementById('next').addEventListener("click", function () {
   estatDeLaPartida.rtasFetas[iterador] = {
     nPreg: -1,
     idResp: -1
@@ -168,7 +173,7 @@ function pulsar(j) {
     .then(data => {
       if (data['ret']) {
         document.getElementById(j).style.background = "#adfa97";
-      }else{
+      } else {
         document.getElementById(j).style.background = "#fd6642";
       }
     })
