@@ -1,0 +1,618 @@
+body{
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+}
+
+.background{
+    background-image: url("../img/background.png");
+    background-size: cover;
+    background-position: 35px;
+}
+
+#padre{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#jugar{
+    /* width: 400px;
+    height: 450px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 50px -20px; */
+}
+
+#subcontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#jugarbtn{
+    margin-bottom: 20px;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 50px -20px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.1s ease;
+}
+
+.botonFinal{
+    margin-top: -10px;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    background-color: #ec695b;
+    box-shadow: 0 0 50px -20px;
+    cursor: pointer;
+    border: 1px solid black;
+    transition: transform 0.1s ease;
+}
+
+#jugarbtn:hover{
+    transform: scale(1.03);
+}
+
+.preguntaContainer{
+    width: 380px;
+    height: 180px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 50px -20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.showReglas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 900px;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: white;
+}
+
+.mitad{
+    display: flex;
+    justify-content: space-between;
+}
+
+.mitad1{
+    width: 400px;
+    padding: 20px;
+}
+
+.mitad2{
+    width: 400px;
+    padding: 20px;
+}
+
+.listaNum{
+    list-style: decimal;
+}
+
+.listaNum li{
+    margin-bottom: 10px;
+}
+
+.listaNum ul li{
+    margin-bottom: 0;
+}
+
+.lista{
+    list-style: none;
+    padding: 0;
+}
+
+.lista li{
+    display: flex;
+    align-items: center;
+}
+
+.lista li .power{
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 5px;
+}
+
+.lista li div img{
+    width: 35px;
+    height: 35px;
+}
+
+.descPower{
+    width: 350px;
+    margin-left: 10px;
+}
+
+#powers{
+    width: 380px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.power{
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+    background-color: white;
+    transition: transform 0.1s ease;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 50px -20px;
+}
+
+.power img{
+    width: 50px;
+    height: 50px;
+}
+
+.unabled img{
+    width: 40px;
+    height: 40px;
+}
+
+#powers .power:hover{
+    transform: scale(1.04);
+}
+
+#ruleta img{
+    margin-top: -5px;
+}
+
+#next img{
+    margin-left: 5px;
+}
+
+.unabled{
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    background-color: rgb(235, 235, 235);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px -10px inset;
+}
+
+
+
+.botonResp{
+    margin-bottom: 20px;
+    width: 380px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 50px -20px;
+    border: none;
+    transition: transform 0.1s ease;
+}
+
+.tiempo{
+    background-color: white;
+    width: 100px;
+    z-index: 20;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.botonResp:hover{
+    transform: scale(1.05);
+}
+
+#portada{
+    width: 230px;
+}
+
+#contador{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#respostes{
+    display: flex;
+    flex-direction: column;
+}
+
+.center{
+    text-align: center;
+}
+
+#rtasCorrectas{
+    margin-bottom: 0;
+}
+
+.btn{
+    border: 2px solid #d1d1d1;
+    background-color: white;
+    border-radius: 20px;
+    height: 30px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.btn:hover{
+    box-shadow: inset 0 0 10px -5px;
+}
+
+.btnEnd{
+    border: 2px solid #d1d1d1;
+    background-color: white;
+    border-radius: 20px;
+    height: 30px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.btnEnd:hover{
+    box-shadow: inset 0 0 10px -5px;
+}
+
+.disabled{
+    pointer-events: none;
+}
+
+.tiempoAcabado{
+    color: #e92121;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.hidden{
+    display: none;
+}
+
+.show{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hover:hover{
+    background-color: #e6f4ff;
+}
+
+.imgContainer{
+    width: 300px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.imgContainer img{
+    max-height: 150px;
+}
+
+.overlay{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.editarContainer{
+    width: 400px;
+    height: 460px;
+    background-color: white;
+    border-radius: 10px;
+    position: fixed;
+    z-index: 20;
+}
+
+.editarbtn{
+    cursor: pointer;
+}
+
+.borrarContainer{
+    width: 400px;
+    height: 155px;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #c7c7c7;
+    position: fixed;
+    z-index: 20;
+}
+
+.rotulo{
+    display: flex;
+    justify-content: space-between;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom: 1px solid #c7c7c7;
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+}
+
+.rotulo h3{
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    margin: 0;
+}
+
+.botones{
+    border-top: 1px solid #c7c7c7;
+    padding: 15px;
+    display: flex;
+    justify-content: right;
+}
+
+.raleway{
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+}
+
+.boton{
+    font-size: 15px;
+    background: none;
+    padding: 3px;
+    height: 27px;
+    width: 100px;
+    border-radius: 7px;
+    border: 1px solid #c7c7c7;
+    margin-right: 7px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.boton:hover{
+    background-color: #eeeeee;
+}
+
+.botonRojo{
+    font-size: 15px;
+    background-color: #e92121;
+    color: white;
+    padding: 3px;
+    height: 27px;
+    width: 100px;
+    border-radius: 7px;
+    border: 1px solid #c53c3c;
+    font-family: "Raleway", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.botonRojo:hover{
+    background-color: #c51919;
+}
+
+.botonAzul{
+    font-size: 15px;
+    background-color: #1696ff;
+    color: white;
+    padding: 3px;
+    height: 27px;
+    width: 100px;
+    border-radius: 7px;
+    border: 1px solid #148ff3;
+    font-family: "Raleway", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.botonAzul:hover{
+    background-color: #1278cc;
+}
+
+.borrarbtn{
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.borrarbtn img{
+    display: block;
+    max-width: 100%;
+}
+
+.diseñoContainer{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+span #idPreg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    border: 1px solid #c7c7c7;
+    border-radius: 10px;
+}
+
+.correcte{
+    text-align: center;
+    width: 100px;
+    background-color: #eaffe4;
+}
+
+.crearContainer{
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    position: absolute;
+    z-index: 20;
+}
+
+.espacio{
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.diseñoContainer h3{
+    text-align: center;
+}
+
+.campo{
+    padding: 15px;
+    border: 1px solid #c7c7c7;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.gridResp{
+    display: grid;
+    grid-template-columns:190px 190px;
+    justify-content: center;
+}
+
+.containRtas{
+    display: flex;
+}
+
+.containRtas div{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containRtas input{
+    width: 150px;
+    text-align: center;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    border-bottom: 1px solid #c7c7c7;
+    margin-bottom: 20px;
+}
+
+#title{
+    flex-grow: 1;
+    text-align: center;
+}
+
+#crearbtn{
+    cursor: pointer;
+    background-color: #1696ff; 
+    border: 1px solid #148ff3;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#crearbtn:hover{
+    background-color: #1278cc;
+}
+
+.avisoContainer{
+    width: 350px;
+    height: 80px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 10px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+
+.ocultar{
+    display: none;
+}
+
+.mostrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.tablaContainer{
+    display: flex;
+    justify-content: center;
+}
+
+th:nth-child(n+3), td:nth-child(n+3){
+    padding-left: 100px;
+}
+
+th:nth-child(2), td:nth-child(2){
+    padding-left: 10px;
+}
+
+tr th{
+    text-align: left;
+}
+
+.imatgeWidth {
+    width: 100px;
+    max-width: 300px; /* Ancho máximo */
+    overflow: hidden; /* Ocultar desbordamiento */
+    text-overflow: ellipsis; /* Mostrar "..." para texto que se corta */
+    white-space: nowrap; /* Evitar que el texto se rompa en múltiples líneas */
+}
+
+.correcteWidth{
+    width: 250px;
+}
+
+.flex-separado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.noStyleBTN{
+    background: transparent;
+    border: none;
+}
