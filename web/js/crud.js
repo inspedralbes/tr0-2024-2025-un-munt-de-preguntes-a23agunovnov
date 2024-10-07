@@ -100,7 +100,6 @@ function editarPreg(idPreg){
             objPreg.respostes[i] = document.getElementById(i).value;
             objPreg.original[i] = respOriginal[i];
         }
-        //Hacer un objPreg.respostes.includes(objPreg.correcte) y que no deje enviarlo directamente, en lugar de hacerlo en el back
         objPreg.correcte = document.getElementById('respCorrecte').value;
         
         fetch('../back/admin/update.php', {
@@ -109,7 +108,7 @@ function editarPreg(idPreg){
         })
         .then(response => response.json())
         .then(data => {
-            aviso(data);
+            aviso(data.ret);
         });
     });
 }
@@ -133,7 +132,6 @@ function borrar(idPreg){
         })
     })
 }
-
 
 //Escuchando clicks en CREAR
 document.getElementById('crearbtn').addEventListener('click', crearPreg);
@@ -162,7 +160,7 @@ function guardarPreg(){
         })
         .then(response => response.json())
         .then(data => {
-            aviso(data)
+            aviso(data.ret)
         });
     }else{
         alert("La respuesta correcta no coincide");
@@ -181,7 +179,6 @@ function aviso(ok){
             title: "Actualizado!",
             showConfirmButton: false,
             width: "320px",
-            height: "10px",
             timer: 1500
           });
         setTimeout(function(){document.getElementById('aviso').classList.replace("mostrar", "ocultar")}, 1000)

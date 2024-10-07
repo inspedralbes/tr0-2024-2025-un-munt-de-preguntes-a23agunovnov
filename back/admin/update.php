@@ -12,11 +12,12 @@
         $sql = "UPDATE preguntes SET pregunta = '$pregunta', imatge = '".$data['imatge']."' WHERE id = ".$data['idPreg'];
         mysqli_query($conn, $sql);
     }
-
+    
     function respExiste($data){
         $existe = false;
         for($i = 0; $i < count($data['respostes']); $i++){
             if($data['correcte'] == $data['respostes'][$i]){
+                echo "Correcta: ".$data['correcte']." y Respuesta con la que coincide: ".$data['respostes'];
                 $existe = true;
             }
         }

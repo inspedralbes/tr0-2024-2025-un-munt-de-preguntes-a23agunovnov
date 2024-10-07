@@ -101,8 +101,7 @@ function updateClock() {
       })
       .catch(error => console.log('Error: ' + error));
 
-    document.getElementById('playAgain').classList.remove("hidden"); //IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-    //document.getElementById('enviarScore').classList.remove("hidden"); //IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+    document.getElementById('playAgain').classList.remove("hidden");
   }
 }
 
