@@ -163,7 +163,7 @@ function guardarPreg(){
             aviso(data.ret)
         });
     }else{
-        alert("La respuesta correcta no coincide");
+        aviso(false);
     }
 }
 
