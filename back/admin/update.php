@@ -17,7 +17,6 @@
         $existe = false;
         for($i = 0; $i < count($data['respostes']); $i++){
             if($data['correcte'] == $data['respostes'][$i]){
-                echo "Correcta: ".$data['correcte']." y Respuesta con la que coincide: ".$data['respostes'];
                 $existe = true;
             }
         }
