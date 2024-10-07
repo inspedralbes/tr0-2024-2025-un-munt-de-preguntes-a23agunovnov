@@ -26,6 +26,7 @@ function mostrar(data){
     });
 }
 
+//Convertir la información recibida por el JSON
 function toObject(data){
     let aux = {};
     data.forEach(preg => {
@@ -41,6 +42,7 @@ document.getElementById('cancelar1').addEventListener('click', function(){
 document.getElementById('cancelarX2').addEventListener('click', function(){
     document.getElementById('editar').classList.replace("mostrar", "ocultar");
 });
+
 //Cerrar ventana de borrar
 document.getElementById('cancelar2').addEventListener('click', function(){
     document.getElementById('borrar').classList.replace("mostrar", "ocultar");
@@ -48,6 +50,7 @@ document.getElementById('cancelar2').addEventListener('click', function(){
 document.getElementById('cancelarX').addEventListener('click', function(){
     document.getElementById('borrar').classList.replace("mostrar", "ocultar");
 });
+
 //Cerrar ventana de crear
 document.getElementById('cancelar3').addEventListener('click', function(){
     document.getElementById('crear').classList.replace("mostrar", "ocultar");
@@ -65,15 +68,13 @@ document.getElementById('panel').addEventListener('click', e => {
         borrarPreg(idPreg);
     }
 });
-//Escuchando clicks en CREAR
-document.getElementById('crearbtn').addEventListener('click', crearPreg);
 
 
 let respOriginal = [];
-
 let objPreg = new Object();
+
+//Editar pregunta
 function editarPreg(idPreg){
-    //let preguntesMap = {};
     htmlString = "";
     let indexResp = 0;
     document.getElementById('idPreg').innerHTML = '<h3>ID: '+(idPreg)+'</h3>'; //CUIDADO CON ESTE ID, LE SUMO UNO PARA QUE COINCIDA CON LA TABLA, AL GUARDAR DATOS, RESTARLE UNO
@@ -113,12 +114,13 @@ function editarPreg(idPreg){
     });
 }
 
+//Pedir confirmación de borrado
 function borrarPreg(idPreg){
     document.getElementById('borrar').classList.replace("ocultar", "mostrar");
-    //Y aca hace el fetch con el valor del ID para borrar esa pregunta con ese ID, sus 4 respuestas de la otra tabla (primero esto)
     document.getElementById('borrarbtn').addEventListener('click', borrar(idPreg));
 }
 
+//Luego de confirmar, borra la pregunta en la BBDD
 function borrar(idPreg){
     document.getElementById('borrarAceptar').addEventListener('click', function(){
         fetch("../back/admin/delete.php",{
@@ -132,11 +134,17 @@ function borrar(idPreg){
     })
 }
 
+
+//Escuchando clicks en CREAR
+document.getElementById('crearbtn').addEventListener('click', crearPreg);
+
+//Mostrar panel para crear pregunta
 function crearPreg(){
     document.getElementById('crear').classList.replace("ocultar", "mostrar");
     document.getElementById('aceptarCrear').addEventListener('click', guardarPreg);
 }
 
+//Guardar la pregunta creada
 function guardarPreg(){
     let newPreg = new Object();
     newPreg.pregunta = document.getElementById('nuevaPreg').value;
@@ -161,7 +169,7 @@ function guardarPreg(){
     }
 }
 
-//Aviso si la orden se ejecutó correctamente
+//Aviso si la orden se ejecutó correctamente, y actualiza la tabla
 function aviso(ok){
     if(ok){
         document.getElementById('editar').classList.replace("mostrar", "ocultar");

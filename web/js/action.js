@@ -31,6 +31,7 @@ function mostrarReglas() {
 //Esperando a escuchar el click de "Aceptar" para comenzar el juego
 document.getElementById('empezarJuego').addEventListener('click', empezarJuego);
 
+//Comenzar a jugar
 function jugar(dataRecibida, dificultad) {
   document.querySelectorAll(".unabled").forEach(boton => {
     boton.classList.remove("unabled");
@@ -38,8 +39,6 @@ function jugar(dataRecibida, dificultad) {
     boton.classList.add("power");
   });
   document.getElementById('jugar').classList.replace('hidden', 'show');
-
-
 
   iterador = 0;
   if (dificultad == "facil") {
@@ -57,6 +56,18 @@ function jugar(dataRecibida, dificultad) {
   mostrarPreguntes(iterador);
 }
 
+//Retardo para que al hacer un click una respuesta y poder ver si está correcta o no
+function mostrarPreguntes(index) {
+  if (index == 0) {
+    mostrarPreg(index);
+  } else {
+    setTimeout(() => {
+      mostrarPreg(index);
+    }, 200);
+  }
+}
+
+//Mostrar pregunta con sus respuestas y su imagen
 function mostrarPreg(indice) {
   let htmlString = '';
   document.getElementById("pregunta").innerHTML = data.preguntes[indice].pregunta;
@@ -66,16 +77,6 @@ function mostrarPreg(indice) {
     htmlString += `<button class="botonResp" style="cursor: pointer;" id=${j} idResp="${j}" name="boton">${data.respostes[data.preguntes[indice].id][j]}</button>`
   }
   document.getElementById("respostes").innerHTML = htmlString;
-}
-
-function mostrarPreguntes(index) {
-  if (index == 0) {
-    mostrarPreg(index);
-  } else {
-    setTimeout(() => {
-      mostrarPreg(index);
-    }, 200);
-  }
 }
 
 //CONTADOR
@@ -105,29 +106,36 @@ function updateClock() {
   }
 }
 
+//Saber que respuesta tocó
 document.getElementById('respostes').addEventListener('click', e => {
   if (e.target.classList.contains('botonResp')) {
     pulsar(e.target.getAttribute('idResp'));
   }
 });
 
+//Ayuda: añadir 5 segundos al contador
 document.getElementById('back5').addEventListener("click", masTiempo);
-
 function masTiempo() {
   document.getElementById('back5').classList.add('disabled');
   document.getElementById('back5').classList.replace('power', 'unabled');
   totalTime += 5;
 }
 
+//Ayuda: pasar a la siguiente pregunta sin penalización
 document.getElementById('next').addEventListener("click", sigPreg);
-
 function sigPreg() {
   document.getElementById('next').classList.add('disabled');
   document.getElementById('next').classList.replace('power', 'unabled');
+  estatDeLaPartida.rtasFetas[iterador] = {
+    nPreg: -1,
+    idResp: -1
+  };
+  iterador++;
+  mostrarPreguntes(iterador);
 }
 
+//Ayuda: quitar 2 respuestas incorrectas
 document.getElementById('50').addEventListener("click", quitarResp);
-
 function quitarResp() {
   document.getElementById('50').classList.add('disabled');
   document.getElementById('50').classList.replace('power', 'unabled');
@@ -142,16 +150,7 @@ function quitarResp() {
     })
 }
 
-document.getElementById('next').addEventListener("click", function () {
-  estatDeLaPartida.rtasFetas[iterador] = {
-    nPreg: -1,
-    idResp: -1
-  };
-  iterador++;
-  mostrarPreguntes(iterador);
-})
-
-// REACCIÓN AL PULSAR
+//Reacción al pulsar una respuesta y saber si está correcta o no
 function pulsar(j) {
   // deshabilitar que pueda tocar otras opciones al pulsar el botón
   document.querySelectorAll(".btn").forEach(boton => {
@@ -182,8 +181,8 @@ function pulsar(j) {
   mostrarPreguntes(iterador);
 }
 
+//Reiniciar el juego al darle a jugar de nuevo
 document.getElementById('playAgain').addEventListener("click", reiniciar);
-
 function reiniciar() {
   document.getElementById('resultadoFinal').classList.replace("show", "hidden");
   empezarJuego();
