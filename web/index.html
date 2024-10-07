@@ -15,10 +15,55 @@
             <div id="container">
                 <div id="subcontainer">
                     <div id="usuario" class="show">
-                        <h1>UMDP</h1>
+                        <h1 style="color: white; font-weight: 800;">UMDP</h1>
                         <input id="nom" type="text" class="campo" placeholder="Introduce tu nombre">
-                        <input id="quantPreg" type="number" class="campo" placeholder="Cantidad de pregunas">
+                        <select class="campo" style="background-color: white; width: 100%;" name="dificultad" id="dificultad">
+                            <option value="facil">Facil</option>
+                            <option value="intermedio">Intermedio</option>
+                            <option value="dificil">Dificil</option>
+                        </select>
+                        <!-- <input id="quantPreg" type="number" class="campo" placeholder="Cantidad de pregunas"> -->
                         <button id="jugarbtn">Jugar</button>
+                    </div>
+                    <div id="reglas" class="hidden">
+                        <h1>Instrucciones</h1>
+                        <div class="mitad">
+                            <div class="mitad1">
+                                <strong>Tu misión:</strong>
+                                <p>Tu misión es adivinar en qué año se estrenaron las películas, respondiendo el máximo de preguntas antes de que el tiempo se acabe.</p>
+                                <strong>Reglas del juego:</strong>
+                                <ul class="listaNum">
+                                    <li><p><strong>Responde las preguntas:</strong>Cada pregunta te presentará cuatro opciones de respuesta. Deberás elegir en qué año se estrenó la película mostrada.</p></li>
+                                    <li>
+                                        <strong>Puntos</strong>
+                                        <ul style="list-style: disc;">
+                                            <li><strong>Respuesta correcta: </strong>+10 puntos</li>
+                                            <li><strong>Respuesta incorrecta: </strong>-5 puntos</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Tiempo limitado:</strong> Tendrás un contador de tiempo que se agotará progresivamente. Intenta responder tantas preguntas como puedas antes de que el tiempo se acabe.</li>
+                                </ul>
+                            </div>
+                            <div class="mitad2">
+                                <strong>Ayudas especiales:</strong>
+                                <p>Durante el juego, tendrás acceso a tres botones de ayuda que podrás usar en cualquier momento para mejorar tus posibilidades:</p>
+                                <ul class="lista">
+                                    <li>
+                                        <div class="power"><img src="img/5seg.svg" alt="back5"></div>
+                                        <div class="descPower"><p><strong>Sumar 5 segundos:</strong> Te permite añadir 5 segundos adicionales al cronómetro, teniendo más tiempo para pensar la respuesta.</p></div>
+                                    </li>
+                                    <li>
+                                        <div class="power"><img src="img/next.png" alt="next" style="margin-left: 5px;"></div>
+                                        <div class="descPower"><p><strong>Saltar pregunta:</strong> Puedes pasar a la siguiente pregunta sin penalización, evita perder puntos si no estás seguro de la respuesta.</p></div>
+                                    </li>
+                                    <li>
+                                        <div class="power"><img src="img/50.png" alt="50"></div>
+                                        <div class="descPower"><p><strong>Eliminar 2 respuestas:</strong> Esta opción elimina dos de las posibles respuestas, aumentando tus posibilidades de acertar.</p></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <input id="empezarJuego" type="button" value="Aceptar" class="botonRojo">
                     </div>
                     <div id="jugar" class="hidden">
                         <div class="tiempo">
@@ -31,6 +76,12 @@
                             </div>
                         </div>
                         <div id="respostes"></div>
+                        <div id="powers">
+                            <div class="power" id="back5"><img src="img/5seg.svg" alt="back5"></div>
+                            <div class="power" id="next"><img src="img/next.png" alt="next"></div>
+                            <!-- <div class="power" id="ruleta"><img src="img/lottery.png" alt="ruleta"></div> -->
+                            <div class="power" id="50"><img src="img/50.png" alt="50"></div>
+                        </div>
                     </div>
                     <div id="resultadoFinal" class="hidden">
                         <div class="preguntaContainer">

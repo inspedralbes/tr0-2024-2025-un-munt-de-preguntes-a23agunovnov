@@ -70,8 +70,8 @@ body{
 }
 
 .preguntaContainer{
-    width: 400px;
-    height: 200px;
+    width: 380px;
+    height: 180px;
     margin-bottom: 30px;
     border-radius: 20px;
     background-color: white;
@@ -81,10 +81,131 @@ body{
     align-items: center;
 }
 
+.showReglas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 900px;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: white;
+}
+
+.mitad{
+    display: flex;
+    justify-content: space-between;
+}
+
+.mitad1{
+    width: 400px;
+    padding: 20px;
+}
+
+.mitad2{
+    width: 400px;
+    padding: 20px;
+}
+
+.listaNum{
+    list-style: decimal;
+}
+
+.listaNum li{
+    margin-bottom: 10px;
+}
+
+.listaNum ul li{
+    margin-bottom: 0;
+}
+
+.lista{
+    list-style: none;
+    padding: 0;
+}
+
+.lista li{
+    display: flex;
+    align-items: center;
+}
+
+.lista li .power{
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 5px;
+}
+
+.lista li div img{
+    width: 35px;
+    height: 35px;
+}
+
+.descPower{
+    width: 350px;
+    margin-left: 10px;
+}
+
+#powers{
+    width: 380px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.power{
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+    background-color: white;
+    transition: transform 0.1s ease;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 50px -20px;
+}
+
+.power img{
+    width: 50px;
+    height: 50px;
+}
+
+.unabled img{
+    width: 40px;
+    height: 40px;
+}
+
+#powers .power:hover{
+    transform: scale(1.04);
+}
+
+#ruleta img{
+    margin-top: -5px;
+}
+
+#next img{
+    margin-left: 5px;
+}
+
+.unabled{
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    background-color: rgb(235, 235, 235);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px -10px inset;
+}
+
+
+
 .botonResp{
     margin-bottom: 20px;
-    width: 400px;
-    height: 60px;
+    width: 380px;
+    height: 50px;
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 0 50px -20px;
@@ -157,7 +278,7 @@ body{
 }
 
 .tiempoAcabado{
-    color: red;
+    color: #e92121;
     margin-top: 10px;
     margin-bottom: 0;
 }

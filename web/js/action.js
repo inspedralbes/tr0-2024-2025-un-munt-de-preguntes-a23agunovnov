@@ -1,14 +1,11 @@
 let data;
 
 async function empezarJuego(){
-  const nom = document.getElementById('nom').value;
-  const quantPreg = document.getElementById('quantPreg').value;
-  localStorage.setItem("nom", nom);
-  localStorage.setItem("quantPreg", quantPreg);
-  await fetch('../back/getPreguntes.php?quantPreg=' + quantPreg)
+  document.getElementById('reglas').classList.replace('showReglas', 'hidden')
+  await fetch('../back/getPreguntes.php?quantPreg=' + 30)
   .then(response => response.json())
   .then(dataRecibida => {
-    jugar(dataRecibida)
+    jugar(dataRecibida, dificultad)
   });
 }
   
@@ -16,13 +13,37 @@ async function empezarJuego(){
   let totalTime;
   let estatDeLaPartida;
 
-document.getElementById('jugarbtn').addEventListener('click', empezarJuego);
+document.getElementById('jugarbtn').addEventListener('click', mostrarReglas);
 
-function jugar(dataRecibida){
+function mostrarReglas(){
+  const nom = document.getElementById('nom').value;
+  const dificultad = document.getElementById('dificultad').value;
+  localStorage.setItem("nom", nom);
+  localStorage.setItem("dificultat", dificultad);
   document.getElementById('usuario').classList.replace('show', 'hidden');
+  document.getElementById('reglas').classList.replace('hidden', 'showReglas')
+}
+
+document.getElementById('empezarJuego').addEventListener('click', empezarJuego);
+
+function jugar(dataRecibida, dificultad){
+  document.querySelectorAll(".unabled").forEach(boton => {
+    boton.classList.remove("unabled");
+    boton.classList.remove("disabled");
+    boton.classList.add("power");
+  });
   document.getElementById('jugar').classList.replace('hidden', 'show');
+
+
+  
   iterador = 0;
-  totalTime = 20;
+  if(dificultad == "facil"){
+    totalTime = 60;
+  }else if(dificultad == "intermedio"){
+    totalTime = 40;
+  }else{
+    totalTime = 30;
+  }
   estatDeLaPartida = {
     rtasFetas: new Array()
   };
@@ -75,7 +96,7 @@ function updateClock() {
       .catch(error => console.log('Error: ' + error));
 
     document.getElementById('playAgain').classList.remove("hidden"); //IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-    document.getElementById('enviarScore').classList.remove("hidden"); //IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+    //document.getElementById('enviarScore').classList.remove("hidden"); //IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
   }
 }
 
@@ -84,6 +105,46 @@ document.getElementById('respostes').addEventListener('click', e => {
     pulsar(e.target.getAttribute('idResp'));
   }
 });
+
+document.getElementById('back5').addEventListener("click", masTiempo);
+
+function masTiempo(){
+  document.getElementById('back5').classList.add('disabled');
+  document.getElementById('back5').classList.replace('power', 'unabled');
+  totalTime+=5;
+}
+
+document.getElementById('next').addEventListener("click", sigPreg);
+
+function sigPreg(){
+  document.getElementById('next').classList.add('disabled');
+  document.getElementById('next').classList.replace('power', 'unabled');
+}
+
+document.getElementById('50').addEventListener("click", quitarResp);
+
+function quitarResp(){
+  document.getElementById('50').classList.add('disabled');
+  document.getElementById('50').classList.replace('power', 'unabled');
+  fetch('../back/powers/quitarResp.php',  {
+    method: 'POST',
+    body: JSON.stringify(data.preguntes[iterador])
+  })
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById(data[0]).classList.add('hidden');
+    document.getElementById(data[1]).classList.add('hidden');
+  })
+}
+
+document.getElementById('next').addEventListener("click", function(){
+  estatDeLaPartida.rtasFetas[iterador] = {
+    nPreg: -1,
+    idResp: -1
+  };
+  iterador++;
+  mostrarPreguntes(iterador);
+})
 
 // REACCIÓN AL PULSAR
 function pulsar(j) {

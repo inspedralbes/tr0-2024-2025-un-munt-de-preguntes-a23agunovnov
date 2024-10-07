@@ -14,14 +14,16 @@ if ($data === null) {
 
 $iterador = 0;
 foreach($data as $rta){
-    if($_SESSION['respostes'][$rta['nPreg']] == $rta['idResp']){
-        $score->numOk++;
-        $score->puntos+=10;
-    }else{
-        $score->puntos-=5;
+    if($rta['nPreg'] != -1 && $rta['idResp'] != -1){
+        if($_SESSION['respostes'][$rta['nPreg']] == $rta['idResp']){
+            $score->numOk++;
+            $score->puntos+=10;
+        }else{
+            $score->puntos-=5;
+        }
+        $score->total++;
+        $iterador++;
     }
-    $score->total++;
-    $iterador++;
 }
 
 echo json_encode($score);
